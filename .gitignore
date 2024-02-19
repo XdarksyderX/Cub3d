@@ -1,4 +1,5 @@
 .vscode/
 obj/*.o
-lib/libft/*.[a,o]
+lib/libft/libft.a
+lib/libft/obj/*.o
 lib/MLX42/build/
