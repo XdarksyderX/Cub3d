@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 18:22:59 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/19 21:47:53 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:20:25 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,14 @@ static char	*ft_line(char *buffer)
 		return (NULL);
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
-	line = ft_calloc_gnl(i + 2, sizeof(char));
+	line = ft_calloc_gnl(i + 1, sizeof(char));
 	i = 0;
 	while (buffer[i] && buffer[i] != '\n')
 	{
 		line[i] = buffer[i];
 		i++;
 	}
-	if (buffer[i] == '\n')
-		line[i] = '\n';
+	line[i] = '\0';
 	return (line);
 }
 
