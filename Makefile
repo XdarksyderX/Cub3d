@@ -6,7 +6,7 @@
 #    By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/19 20:51:28 by migarci2          #+#    #+#              #
-#    Updated: 2024/02/19 21:51:52 by migarci2         ###   ########.fr        #
+#    Updated: 2024/02/20 22:46:42 by migarci2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,15 @@ LIBMLX   = lib/MLX42
 LIBFT    = lib/libft
 
 SRC_DIR  = src
-SRCs     = $(wildcard $(SRC_DIR)/*.c)
+SRCs     =  $(SRC_DIR)/main.c \
+            $(SRC_DIR)/misc/management.c \
+            $(SRC_DIR)/misc/misc.c \
+            $(SRC_DIR)/misc/sanitize_line.c \
+            $(SRC_DIR)/parsing/checker.c \
+            $(SRC_DIR)/parsing/color.c \
+            $(SRC_DIR)/parsing/debug.c \
+            $(SRC_DIR)/parsing/map_size.c \
+            $(SRC_DIR)/parsing/parser.c
 
 OBJ_DIR  = obj
 OBJs     = $(SRCs:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

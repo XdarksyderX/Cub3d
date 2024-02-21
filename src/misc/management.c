@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   misc.h                                             :+:      :+:    :+:   */
+/*   management.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/19 22:17:18 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/20 22:38:41 by migarci2         ###   ########.fr       */
+/*   Created: 2024/02/20 22:12:40 by migarci2          #+#    #+#             */
+/*   Updated: 2024/02/20 22:42:07 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MISC_H
-# define MISC_H
+#include "misc.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdbool.h>
+void	ft_free_matrix(void **map, int n)
+{
+	int	i;
 
-# include "libft.h"
+	i = 0;
+	while (i < n)
+	{
+		free(((unsigned char **)map)[i]);
+		i++;
+	}
+	free(map);
+}
 
-# define SPACES " \t\v\r"
+int	ft_matrix_len(void **matrix)
+{
+	int	i;
 
-void	ft_usage(void);
-
-char	*ft_sanitize_line(char *str);
-
-void	ft_free_matrix(void **map, int n);
-int		ft_matrix_len(void **matrix);
-
-
-#endif
+	i = 0;
+	while (((unsigned char **) matrix)[i] != NULL)
+		i++;
+	return (i);
+}
