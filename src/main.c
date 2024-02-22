@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 21:56:02 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/21 17:43:00 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/21 19:22:38 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,5 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	data = ft_get_config(argv[1]);
-	(void) data;
 	ft_debug_config(data);
 }

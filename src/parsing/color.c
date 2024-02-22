@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 22:15:47 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/21 18:25:23 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/21 20:05:29 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ void	ft_parse_color(char	**config_line, t_map_config *config)
 	colors = ft_split(config_line[1], ',');
 	if (!colors)
 		return ;
+	if (ft_matrix_len((void **) colors) != 3)
+	{
+		ft_free_matrix((void **) colors, ft_matrix_len((void **) colors));
+		return ;
+	}
 	if (ft_strncmp(config_line[0], "F ", 1) == 0)
 	{
 		config->floor_color[0] = ft_atoi(colors[0]);
