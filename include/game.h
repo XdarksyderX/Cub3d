@@ -1,26 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/19 21:56:02 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/22 20:38:17 by migarci2         ###   ########.fr       */
+/*   Created: 2024/02/22 20:32:18 by migarci2          #+#    #+#             */
+/*   Updated: 2024/02/22 20:43:56 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
-#include "MLX42.h"
+#ifndef GAME_H
+# define GAME_H
 
-int	main(int argc, char **argv)
+# include "misc.h"
+# include "MLX42.h"
+
+typedef	struct s_player
 {
-	t_map_config	*data;
-	if (argc != 2)
-	{
-		ft_usage();
-		return (1);
-	}
-	data = ft_get_config(argv[1]);
-	ft_debug_config(data);
-}
+	float	x;
+	float	y;
+	float	angle;
+}				t_player;
+
+typedef struct s_map
+{
+	char		**map;
+	int			width;
+	int			height;
+	t_player	*player;
+}				t_map;
+
+typedef struct s_game
+{
+	void	*mlx;
+	void	*win;
+	t_map	*map;
+	void	*textures[4];
+	int		floor_color[3];
+	int		ceiling_color[3];
+}				t_game;
+
+#endif
