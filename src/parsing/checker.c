@@ -6,11 +6,18 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 18:34:05 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/21 20:11:56 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/22 21:20:59 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+
+static void	assign_player(int *pos, int i, int j, char **map)
+{
+	pos[0] = i;
+	pos[1] = j;
+	pos[2] = map[i][j];
+}
 
 int	*ft_find_player_pos(char **map)
 {
@@ -18,7 +25,7 @@ int	*ft_find_player_pos(char **map)
 	int	i;
 	int	j;
 
-	pos = (int *)malloc(sizeof(int) * 2);
+	pos = (int *)malloc(sizeof(int) * 3);
 	if (!pos)
 		return (NULL);
 	i = 0;
@@ -29,8 +36,7 @@ int	*ft_find_player_pos(char **map)
 		{
 			if (ft_strchr("NSWE", map[i][j]) != NULL)
 			{
-				pos[0] = i;
-				pos[1] = j;
+				assign_player(pos, i, j, map);
 				return (pos);
 			}
 			j++;
@@ -64,7 +70,7 @@ int	ft_count_chars(char **map, char *chars)
 }
 
 
-bool	ft_check_config(t_map_config *config)
+bool	ft_check_config(t_config *config)
 {
 	char	**map;
 

@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 21:55:15 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/21 17:57:21 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/22 21:06:44 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ bool	is_map_line(const char *line)
 	return (true);
 }
 
-void	ft_get_map_size(char *config_file, t_map_config *config)
+void	ft_get_map_size(char *config_file, t_config *config)
 {
 	int		fd;
 	char	*line;

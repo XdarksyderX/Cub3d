@@ -6,13 +6,13 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 22:15:47 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/21 20:05:29 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/22 21:06:44 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-void	ft_parse_color(char	**config_line, t_map_config *config)
+void	ft_parse_color(char	**config_line, t_config *config)
 {
 	char	**colors;
 
@@ -39,7 +39,7 @@ void	ft_parse_color(char	**config_line, t_map_config *config)
 	ft_free_matrix((void **) colors, ft_matrix_len((void **) colors));
 }
 
-void	ft_fix_color(t_map_config *config)
+void	ft_fix_color(t_config *config)
 {
 	if (!ft_valid_color(config->floor_color))
 	{

@@ -6,21 +6,28 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 21:56:02 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/22 20:38:17 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/22 21:59:31 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
-#include "MLX42.h"
+#include "game.h"
 
 int	main(int argc, char **argv)
 {
-	t_map_config	*data;
+	t_game	*game;
+
 	if (argc != 2)
 	{
 		ft_usage();
 		return (1);
 	}
-	data = ft_get_config(argv[1]);
-	ft_debug_config(data);
+	game = ft_init_game(argv[1]);
+	if (!game)
+	{
+		ft_putstr_fd("Error\nFailed to initialize game\n", 2);
+		return (1);
+	}
+	mlx_loop(game->mlx);
 }
+

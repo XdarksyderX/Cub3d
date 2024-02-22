@@ -6,13 +6,13 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 22:32:47 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/21 19:23:02 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/22 21:06:44 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-void	ft_debug_config(t_map_config *config)
+void	ft_debug_config(t_config *config)
 {
 	int	i;
 

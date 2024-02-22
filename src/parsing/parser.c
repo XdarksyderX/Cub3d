@@ -6,13 +6,13 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:21:07 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/21 18:26:31 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/22 21:06:44 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-static void	ft_parse_texture(char **config_line, t_map_config *config)
+static void	ft_parse_texture(char **config_line, t_config *config)
 {
 	if (ft_strncmp(config_line[0], "NO", 2) == 0)
 	{
@@ -36,7 +36,7 @@ static void	ft_parse_texture(char **config_line, t_map_config *config)
 	}
 }
 
-static void	ft_init(t_map_config *config)
+static void	ft_init(t_config *config)
 {
 	config->floor_color[0] = -1;
 	config->floor_color[1] = -1;
@@ -53,7 +53,7 @@ static void	ft_init(t_map_config *config)
 	config->cols = 0;
 }
 
-static void	ft_get_map(int fd, t_map_config *config, char *line)
+static void	ft_get_map(int fd, t_config *config, char *line)
 {
 	int		i;
 
@@ -80,7 +80,7 @@ static void	ft_get_map(int fd, t_map_config *config, char *line)
 	config->map[i] = NULL;
 }
 
-static void	ft_parse_line(char *line, t_map_config *config, int *lock)
+static void	ft_parse_line(char *line, t_config *config, int *lock)
 {
 	char	**config_line;
 
@@ -97,15 +97,15 @@ static void	ft_parse_line(char *line, t_map_config *config, int *lock)
 	free(line);
 }
 
-t_map_config	*ft_get_config(char	*config_file)
+t_config	*ft_get_config(char	*config_file)
 {
-	t_map_config	*config;
+	t_config	*config;
 	int				fd;
 	char			*line;
 	int				lock;
 
 	fd = open(config_file, O_RDONLY);
-	config = malloc(sizeof(t_map_config));
+	config = malloc(sizeof(t_config));
 	if (!config || fd < 0)
 		return (NULL);
 	ft_init(config);

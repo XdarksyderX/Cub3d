@@ -6,7 +6,7 @@
 #    By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/19 20:51:28 by migarci2          #+#    #+#              #
-#    Updated: 2024/02/21 19:27:38 by migarci2         ###   ########.fr        #
+#    Updated: 2024/02/22 20:53:05 by migarci2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,8 @@ SRCs     =  $(SRC_DIR)/main.c \
             $(SRC_DIR)/parsing/color.c \
             $(SRC_DIR)/parsing/debug.c \
             $(SRC_DIR)/parsing/map_size.c \
+			$(SRC_DIR)/parsing/checker.c \
+			$(SRC_DIR)/parsing/map_size.c \
             $(SRC_DIR)/parsing/parser.c
 
 OBJ_DIR  = obj
