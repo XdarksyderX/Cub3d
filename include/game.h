@@ -6,20 +6,22 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 20:32:18 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/22 21:54:48 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/24 18:26:18 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_H
 # define GAME_H
 
+# include <math.h>
+
 # include "misc.h"
 # include "MLX42.h"
 
-# define NORTH_ANGLE 90
+# define NORTH_ANGLE M_PI_2
 # define EAST_ANGLE 0
-# define SOUTH_ANGLE 270
-# define WEST_ANGLE 180
+# define SOUTH_ANGLE 4.71238898038 // 270 degrees in radians
+# define WEST_ANGLE M_PI
 
 # define NORTH_TEXTURE 0
 # define SOUTH_TEXTURE 1
@@ -51,5 +53,9 @@ typedef struct s_game
 }				t_game;
 
 t_game	*ft_init_game(char *config_file);
+void	ft_setup_hooks(t_game *game);
+void	ft_free_game(t_game *game);
+
+void	ft_free_map(t_map	*map);
 
 #endif

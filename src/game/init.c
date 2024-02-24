@@ -6,14 +6,14 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 20:32:06 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/22 21:54:31 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/24 18:26:33 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 #include "parsing.h"
 
-static void	ft_free_game(t_game *game)
+void	ft_free_game(t_game *game)
 {
 	if (!game)
 		return ;
@@ -77,7 +77,7 @@ static t_map	*ft_init_map(t_config *config)
 		return (free(map), NULL);
 	map->width = config->cols;
 	map->height = config->rows;
-	map->map = ft_matrix_dup((void **)config->map);
+	map->map = (char **) ft_matrix_dup((void **)config->map);
 	if (!map->map)
 	{
 		free(map);
@@ -100,8 +100,8 @@ t_game	*ft_init_game(char *config_file)
 	game = (t_game *)malloc(sizeof(t_game));
 	if (!game)
 		return (NULL);
-	game->mlx = mlx_init(1920, 1080, "cub3d", true);
-	map_config = ft_parse_map(config_file);
+	game->mlx = mlx_init(1280, 720, "cub3d", false);
+	map_config = ft_get_config(config_file);
 	game->map = ft_init_map(map_config);
 	if (!game->mlx || !game->map)
 	{
@@ -111,5 +111,6 @@ t_game	*ft_init_game(char *config_file)
 	}
 	ft_init_textures(game, map_config);
 	ft_free_config(map_config);
+	ft_setup_hooks(game);
 	return (game);
 }

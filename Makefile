@@ -6,7 +6,7 @@
 #    By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/19 20:51:28 by migarci2          #+#    #+#              #
-#    Updated: 2024/02/22 20:53:05 by migarci2         ###   ########.fr        #
+#    Updated: 2024/02/24 17:16:35 by migarci2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,24 +28,25 @@ SRCs     =  $(SRC_DIR)/main.c \
             $(SRC_DIR)/parsing/color.c \
             $(SRC_DIR)/parsing/debug.c \
             $(SRC_DIR)/parsing/map_size.c \
-			$(SRC_DIR)/parsing/checker.c \
-			$(SRC_DIR)/parsing/map_size.c \
-            $(SRC_DIR)/parsing/parser.c
+            $(SRC_DIR)/parsing/parser.c \
+			$(SRC_DIR)/game/init.c \
+			$(SRC_DIR)/game/hooks.c
 
 OBJ_DIR  = obj
 OBJs     = $(SRCs:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-INCLUDE  = -I./include -I$(LIBMLX)/include -I$(LIBFT)/include
+INCLUDE  = -I./include -I$(LIBMLX)/include/MLX42 -I$(LIBFT)/include
 
 # Detección de sistema operativo para ajustar LIBGL
 UNAME_S := $(shell uname -s)
+LIBGL    = -lglfw 
 ifeq ($(UNAME_S),Darwin) # macOS
 	LIBGL    = -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib"
 else ifeq ($(UNAME_S),Linux)
-	LIBGL    =
+	LIBGL    = -lglfw 
 endif
 
-LIBS     = $(LIBGL) -L$(LIBMLX)/build -lmlx42 -L$(LIBFT) -lft
+LIBS = -L$(LIBMLX)/build -lmlx42 -L$(LIBFT) -lft $(LIBGL)
 
 all: $(NAME)
 
@@ -56,7 +57,7 @@ $(LIBFT)/libft.a:
 $(LIBMLX)/build/libmlx42.a:
 	@echo "Compiling MLX42..."
 	@rm -rf $(LIBMLX)/build
-	@cd $(LIBMLX) && mkdir -p build && cd build && cmake .. > /dev/null && make > /dev/null
+	@cd $(LIBMLX) && cmake -B build && cmake --build build -j4 > /dev/null
 
 libraries: $(LIBFT)/libft.a $(LIBMLX)/build/libmlx42.a
 
