@@ -6,11 +6,12 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 22:15:47 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/22 21:06:44 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/24 20:48:20 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+#include "game.h"
 
 void	ft_parse_color(char	**config_line, t_config *config)
 {

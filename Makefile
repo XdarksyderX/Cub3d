@@ -6,7 +6,7 @@
 #    By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/19 20:51:28 by migarci2          #+#    #+#              #
-#    Updated: 2024/02/24 17:16:35 by migarci2         ###   ########.fr        #
+#    Updated: 2024/02/24 21:47:30 by migarci2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,9 @@ SRCs     =  $(SRC_DIR)/main.c \
             $(SRC_DIR)/parsing/map_size.c \
             $(SRC_DIR)/parsing/parser.c \
 			$(SRC_DIR)/game/init.c \
-			$(SRC_DIR)/game/hooks.c
+			$(SRC_DIR)/game/hooks.c \
+			$(SRC_DIR)/game/render.c \
+			$(SRC_DIR)/game/move.c \
 
 OBJ_DIR  = obj
 OBJs     = $(SRCs:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
@@ -39,14 +41,16 @@ INCLUDE  = -I./include -I$(LIBMLX)/include/MLX42 -I$(LIBFT)/include
 
 # Detección de sistema operativo para ajustar LIBGL
 UNAME_S := $(shell uname -s)
-LIBGL    = -lglfw 
+LIBGL    = -lglfw
 ifeq ($(UNAME_S),Darwin) # macOS
 	LIBGL    = -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib"
 else ifeq ($(UNAME_S),Linux)
 	LIBGL    = -lglfw 
 endif
 
-LIBS = -L$(LIBMLX)/build -lmlx42 -L$(LIBFT) -lft $(LIBGL)
+LIBMATH  = -lm
+
+LIBS = -L$(LIBMLX)/build -lmlx42 -L$(LIBFT) -lft $(LIBGL) -lm
 
 all: $(NAME)
 
