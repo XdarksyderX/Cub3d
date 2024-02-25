@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 21:59:41 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/24 22:49:54 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/26 00:33:32 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ static void	ft_esc(mlx_key_data_t keydata, void *data)
 static void	ft_loop_hook(void *data)
 {
 	t_game	*game;
-	int		changed;
+	bool	changed;
 
 	game = (t_game *) data;
-	changed = 0;
+	changed = false;
 	if (mlx_is_key_down(game->mlx, UP_KEY))
 		changed |= ft_move_forward_backward(game, UP_KEY);
 	if (mlx_is_key_down(game->mlx, DOWN_KEY))
@@ -54,7 +54,7 @@ static void	ft_loop_hook(void *data)
 	{
 		ft_render(game);
 		printf("(%f, %f, %f)\n", game->map->player->x,
-			game->map->player->y, game->map->player->angle);
+			game->map->player->y, game->map->player->angle * 180 / PI);
 	}
 }
 

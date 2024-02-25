@@ -6,12 +6,11 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 20:32:06 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/24 21:36:40 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/26 00:30:18 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
-#include "parsing.h"
 
 void	ft_free_game(t_game *game)
 {
@@ -55,8 +54,8 @@ static t_player	*ft_init_player(t_config *config)
 		free(player);
 		return (NULL);
 	}
-	player->x = pos[0];
-	player->y = pos[1];
+	player->x = (pos[0] * TILE_SIZE) + (TILE_SIZE / 2);
+	player->y = (pos[1] * TILE_SIZE) + (TILE_SIZE / 2);
 	if (pos[2] == 'N')
 		player->angle = NORTH_ANGLE;
 	else if (pos[2] == 'E')
@@ -103,14 +102,17 @@ t_game	*ft_init_game(char *config_file)
 	game->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d", false);
 	map_config = ft_get_config(config_file);
 	game->map = ft_init_map(map_config);
-	if (!game->mlx || !game->map)
+	if (!ft_check_config(map_config) || !game->mlx || !game->map)
 	{
 		ft_free_game(game);
 		ft_free_config(map_config);
 		return (NULL);
 	}
+	game->ceiling_color = ft_get_color(map_config->ceiling_color);
+	game->floor_color = ft_get_color(map_config->floor_color);
 	ft_init_textures(game, map_config);
 	ft_free_config(map_config);
 	ft_setup_hooks(game);
+	ft_render(game);
 	return (game);
 }

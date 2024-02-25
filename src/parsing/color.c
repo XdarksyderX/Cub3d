@@ -6,12 +6,17 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 22:15:47 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/24 20:48:20 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/25 12:22:03 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 #include "game.h"
+
+uint32_t	ft_get_color(int color[3])
+{
+	return (color[0] << 24 | color[1] << 16 | color[2] << 8 | 255);
+}
 
 void	ft_parse_color(char	**config_line, t_config *config)
 {

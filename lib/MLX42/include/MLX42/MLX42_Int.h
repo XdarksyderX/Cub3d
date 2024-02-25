@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 23:55:34 by W2Wizard          #+#    #+#             */
-/*   Updated: 2024/02/19 21:38:00 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/25 12:57:56 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,11 @@ extern int32_t mlx_settings[MLX_SETTINGS_MAX];
 // A single vertex, identical to the layout in the shader.
 typedef struct vertex
 {
-	float	x;
-	float	y;
-	float	z;
-	float	u;
-	float	v;
+	double	x;
+	double	y;
+	double	z;
+	double	u;
+	double	v;
 	int8_t	tex;
 }	vertex_t;
 

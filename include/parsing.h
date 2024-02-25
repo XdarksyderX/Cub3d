@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:16:43 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/24 20:48:26 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/25 11:46:28 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PARSING_H
 
 # include <fcntl.h>
+# include <stdint.h>
 
 # include "misc.h"
 
@@ -33,6 +34,7 @@ typedef struct s_config
 }				t_config;
 
 void			ft_parse_color(char	**config_line, t_config *config);
+uint32_t		ft_get_color(int color[3]);
 bool			ft_valid_color(int color[3]);
 
 void			ft_get_map_size(char *config_file, t_config *config);

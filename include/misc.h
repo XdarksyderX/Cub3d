@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:17:18 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/24 16:14:47 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/25 13:44:32 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 
 # include "libft.h"
 # include "parsing.h"
+
+# define PI 3.14159265359
+# define PI_2 1.57079632679
+# define PI3_2 4.71238898038
 
 # define SPACES " \t\v\r"
 

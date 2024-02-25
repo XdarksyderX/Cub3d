@@ -6,23 +6,38 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 20:25:12 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/24 23:01:16 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/26 00:34:25 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 
-static bool	ft_in_limits(float x, float y, t_game *game)
+static bool	ft_in_limits(int map_x, int map_y, t_game *game)
 {
-	if (x < 0 || x >= game->map->width || y < 0 || y >= game->map->height)
+	if (map_x < 0 || map_x >= game->map->width
+		|| map_y < 0 || map_y >= game->map->height)
 		return (false);
 	return (true);
 }
 
-int	ft_move_forward_backward(t_game *game, int key)
+static bool	ft_is_position_valid(t_game *game, double new_x, double new_y)
 {
-	float	new_x;
-	float	new_y;
+	int	map_x;
+	int	map_y;
+
+	map_x = (int)(new_x / TILE_SIZE);
+	map_y = (int)(new_y / TILE_SIZE);
+	if (!ft_in_limits(map_x, map_y, game))
+		return (false);
+	if (game->map->map[map_y][map_x] == '1')
+		return (false);
+	return (true);
+}
+
+bool	ft_move_forward_backward(t_game *game, int key)
+{
+	double	new_x;
+	double	new_y;
 
 	if (key == UP_KEY)
 	{
@@ -38,63 +53,61 @@ int	ft_move_forward_backward(t_game *game, int key)
 		new_y = game->map->player->y
 			- sin(game->map->player->angle) * MOVE_STEP;
 	}
-	if (ft_in_limits(new_x, new_y, game)
-		&& game->map->map[(int)new_y][(int)new_x] != '1')
+	if (ft_is_position_valid(game, new_x, new_y))
 	{
 		game->map->player->x = new_x;
 		game->map->player->y = new_y;
-		return (1);
+		return (true);
 	}
-	return (0);
+	return (false);
 }
 
-int	ft_strafe(t_game *game, int key)
+bool	ft_strafe(t_game *game, int key)
 {
-	float	angle;
-	float	new_x;
-	float	new_y;
+	double	angle;
+	double	new_x;
+	double	new_y;
 
 	if (key == LEFT_KEY)
 	{
-		angle = game->map->player->angle + M_PI_2;
+		angle = game->map->player->angle + PI_2;
 		new_x = game->map->player->x + cos(angle) * MOVE_STEP;
 		new_y = game->map->player->y + sin(angle) * MOVE_STEP;
 	}
 	else if (key == RIGHT_KEY)
 	{
-		angle = game->map->player->angle - M_PI_2;
+		angle = game->map->player->angle - PI_2;
 		new_x = game->map->player->x + cos(angle) * MOVE_STEP;
 		new_y = game->map->player->y + sin(angle) * MOVE_STEP;
 	}
-	if (ft_in_limits(new_x, new_y, game)
-		&& game->map->map[(int)new_y][(int)new_x] != '1')
+	if (ft_is_position_valid(game, new_x, new_y))
 	{
 		game->map->player->x = new_x;
 		game->map->player->y = new_y;
-		return (1);
+		return (true);
 	}
-	return (0);
+	return (false);
 }
 
-int	ft_rotate(t_game *game, int key)
+bool	ft_rotate(t_game *game, int key)
 {
 	if (key == LEFT_ARROW_KEY)
 	{
 		game->map->player->angle -= ANGLE_STEP;
 		if (game->map->player->angle < 0)
 		{
-			game->map->player->angle += 2 * M_PI;
-			return (1);
+			game->map->player->angle += 2 * PI;
 		}
+		return (true);
 	}
 	else if (key == RIGHT_ARROW_KEY)
 	{
 		game->map->player->angle += ANGLE_STEP;
-		if (game->map->player->angle >= 2 * M_PI)
+		if (game->map->player->angle >= 2 * PI)
 		{
-			game->map->player->angle -= 2 * M_PI;
-			return (1);
+			game->map->player->angle -= 2 * PI;
 		}
+		return (true);
 	}
-	return (0);
+	return (false);
 }

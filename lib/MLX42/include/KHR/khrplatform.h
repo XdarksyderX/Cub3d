@@ -213,7 +213,7 @@ typedef unsigned long long int  khronos_uint64_t;
 #elif 0
 
 /*
- * Hypothetical platform with no float or int64 support
+ * Hypothetical platform with no double or int64 support
  */
 typedef int                     khronos_int32_t;
 typedef unsigned int            khronos_uint32_t;
@@ -270,9 +270,9 @@ typedef unsigned long  int     khronos_usize_t;
 
 #if KHRONOS_SUPPORT_FLOAT
 /*
- * Float type
+ * double type
  */
-typedef          float         khronos_float_t;
+typedef          double         khronos_float_t;
 #endif
 
 #if KHRONOS_SUPPORT_INT64

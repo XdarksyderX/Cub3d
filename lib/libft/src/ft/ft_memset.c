@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 18:21:45 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/19 21:47:46 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/25 11:50:07 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,19 @@
  * para inicializar una región de memoria con un valor constante, como llenar u
  * arreglo con ceros o algún otro valor.
  *
- * @param str    Puntero al bloque de memoria que se llenará.
+ * @param b    Puntero al bloque de memoria que se llenará.
  * @param c      Valor que se utilizará para llenar el bloque de memoria.
  * @param size   Número de bytes que se llenarán con el valor 'c'.
  * @return       Un puntero al bloque de memoria 'str' después de llenarlo.
  */
-void	*ft_memset(void *str, int c, size_t size)
+void	*ft_memset(void *b, int c, size_t size)
 {
-	size_t	i;
-	char	*pstr;
+	size_t			i;
+	unsigned char	*ptr;
 
 	i = 0;
-	pstr = (char *)str;
+	ptr = (unsigned char *)b;
 	while (i < size)
-		pstr[i++] = c;
-	return (str);
+		ptr[i++] = (unsigned char)c;
+	return (b);
 }

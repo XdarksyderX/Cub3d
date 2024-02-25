@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 18:19:40 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/19 22:04:37 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/25 11:50:21 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void				*ft_memcpy(void *dest, const void *src, size_t size);
 void				ft_free2d(char **ptr);
 void				ft_free(void *ptr);
 void				*ft_memmove(void *dest, const void *src, size_t size);
-void				*ft_memset(void *str, int c, size_t size);
+void				*ft_memset(void *b, int c, size_t size);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);

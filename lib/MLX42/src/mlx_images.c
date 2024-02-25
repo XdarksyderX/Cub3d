@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   mlx_images.c                                       :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: W2Wizard <main@w2wizard.dev>                 +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/12/28 02:29:06 by W2Wizard      #+#    #+#                 */
-/*   Updated: 2023/03/30 16:36:39 by ntamayo-      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   mlx_images.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/28 02:29:06 by W2Wizard          #+#    #+#             */
+/*   Updated: 2024/02/25 12:57:56 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,11 @@ static int8_t mlx_bind_texture(mlx_ctx_t* mlx, mlx_image_t* img)
  */
 void mlx_draw_instance(mlx_ctx_t* mlx, mlx_image_t* img, mlx_instance_t* instance)
 {
-	float w = (float) img->width;
-	float h = (float) img->height;
-	float x = (float) instance->x;
-	float y = (float) instance->y;
-	float z = (float) instance->z;
+	double w = (double) img->width;
+	double h = (double) img->height;
+	double x = (double) instance->x;
+	double y = (double) instance->y;
+	double z = (double) instance->z;
 	int8_t tex = mlx_bind_texture(mlx, img);
 
 	vertex_t vertices[6] = {
@@ -230,8 +230,8 @@ bool mlx_resize_image(mlx_image_t* img, uint32_t nwidth, uint32_t nheight)
 	if (nwidth != img->width || nheight != img->height)
 	{
 		uint32_t* origin = (uint32_t*)img->pixels;
-		float wstep = (float)img->width / nwidth;
-		float hstep = (float)img->height / nheight;
+		double wstep = (double)img->width / nwidth;
+		double hstep = (double)img->height / nheight;
 
 		uint8_t* tempbuff = calloc(nwidth * nheight, BPP);
 		if (!tempbuff)
