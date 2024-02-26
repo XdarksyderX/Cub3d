@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 18:34:05 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/22 21:20:59 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/26 10:55:45 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int	ft_count_chars(char **map, char *chars)
 	}
 	return (count);
 }
-
 
 bool	ft_check_config(t_config *config)
 {

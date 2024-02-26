@@ -6,11 +6,25 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 20:19:35 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/25 22:48:59 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/26 10:13:10 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
+
+uint32_t	mlx_get_pixel_color(mlx_image_t *image, uint32_t x, uint32_t y)
+{
+	uint8_t		*pixel;
+	uint32_t	color;
+
+	pixel = &image->pixels[(y * image->width + x) * sizeof(uint32_t)];
+	color = 0;
+	color |= ((uint32_t)pixel[0]) << 24;
+	color |= ((uint32_t)pixel[1]) << 16;
+	color |= ((uint32_t)pixel[2]) << 8;
+	color |= (uint32_t)pixel[3];
+	return (color);
+}
 
 void	*ft_get_texture(double angle, t_game *game)
 {

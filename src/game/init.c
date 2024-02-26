@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 20:32:06 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/26 00:30:18 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/26 10:56:07 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	ft_init_textures(t_game *game, t_config *config)
 		ft_free_game(game);
 		ft_free_config(config);
 		ft_putstr_fd("Error\nFailed to load textures\n", 2);
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 }
 

@@ -6,14 +6,19 @@
 #    By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/19 20:51:28 by migarci2          #+#    #+#              #
-#    Updated: 2024/02/25 20:32:32 by migarci2         ###   ########.fr        #
+#    Updated: 2024/02/26 11:32:36 by migarci2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME     = cub3d
 
+
 CC       = gcc
-CFLAGS   = -Wall -Wextra -Werror -g
+CFLAGS   = -Wall -Wextra -Werror
+
+ifeq ($(DEBUG),1)
+    DEBUG = -DDEBUG=1
+endif
 
 LIBMLX   = lib/MLX42
 LIBFT    = lib/libft
@@ -52,7 +57,7 @@ endif
 
 LIBMATH  = -lm
 
-LIBS = -L$(LIBMLX)/build -lmlx42 -L$(LIBFT) -lft $(LIBGL) -lm
+LIBS = -L$(LIBMLX)/build -lmlx42 -L$(LIBFT) -lft -ldl $(LIBGL) -lm -pthread
 
 all: $(NAME)
 
@@ -63,7 +68,7 @@ $(LIBFT)/libft.a:
 $(LIBMLX)/build/libmlx42.a:
 	@echo "Compiling MLX42..."
 	@rm -rf $(LIBMLX)/build
-	@cd $(LIBMLX) && cmake -B build && cmake --build build -j4 > /dev/null
+	@cd $(LIBMLX) && cmake -B build -DDEBUG=$(DEBUG) && cmake --build build -j4 > /dev/null
 
 libraries: $(LIBFT)/libft.a $(LIBMLX)/build/libmlx42.a
 

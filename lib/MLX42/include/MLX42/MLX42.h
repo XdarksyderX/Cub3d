@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   MLX42.h                                            :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: W2Wizard <main@w2wizard.dev>                 +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2021/12/28 02:29:06 by W2Wizard      #+#    #+#                 */
-/*   Updated: 2023/03/30 16:23:19 by ntamayo-      ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 /**
  *
  * MLX42 is a cross-platform low level and simple cross-platform graphics
@@ -836,8 +824,8 @@ mlx_image_t* mlx_texture_to_image(mlx_t* mlx, mlx_texture_t* texture);
  * @param[in] y The Y coordinate position.
  * @param[in] color The color value to put.
  */
-void mlx_put_pixel(mlx_image_t* image, uint32_t x, uint32_t y, uint32_t color);
-
+void		mlx_put_pixel(mlx_image_t* image, uint32_t x, uint32_t y, uint32_t color);
+uint32_t	mlx_get_pixel_color(mlx_image_t *image, uint32_t x, uint32_t y);
 /**
  * Creates and allocates a new image buffer.
  * 

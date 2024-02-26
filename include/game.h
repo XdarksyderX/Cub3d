@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 20:32:18 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/26 00:29:33 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/26 11:03:57 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,15 @@
 
 # define MOVE_STEP 16
 
-# define UP_KEY 87			// W
-# define DOWN_KEY 83		// S
-# define LEFT_KEY 65		// A
-# define RIGHT_KEY 68		// D
+# define UP_KEY MLX_KEY_W		// W
+# define DOWN_KEY MLX_KEY_S		// S
+# define LEFT_KEY MLX_KEY_A		// A
+# define RIGHT_KEY MLX_KEY_D	// D
 
 # define ANGLE_STEP 0.05
 
-# define LEFT_ARROW_KEY 263
-# define RIGHT_ARROW_KEY 262
+# define LEFT_ARROW_KEY MLX_KEY_LEFT
+# define RIGHT_ARROW_KEY MLX_KEY_RIGHT
 
 # define ESC_KEY 53
 
@@ -83,7 +83,7 @@ typedef struct s_map
 
 typedef struct s_game
 {
-	void			*mlx;
+	mlx_t			*mlx;
 	t_map			*map;
 	mlx_texture_t	*textures[4];
 	uint32_t		floor_color;
@@ -99,6 +99,7 @@ bool			ft_strafe(t_game *game, int key);
 bool			ft_rotate(t_game *game, int key);
 void			ft_render(t_game *game);
 
+uint32_t		mlx_get_pixel_color(mlx_image_t *image, uint32_t x, uint32_t y);
 void			*ft_get_texture(double angle, t_game *game);
 uint32_t		ft_get_texture_pixel(double x, double y, mlx_texture_t *texture);
 double			ft_get_tex_y(int y, t_wall_info wall_info);
