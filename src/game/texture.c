@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 20:19:35 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/26 10:13:10 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/26 12:10:38 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,11 @@ uint32_t	ft_get_texture_pixel(double x, double y, mlx_texture_t *texture)
 
 	tex_x = (int)(x * texture->width);
 	tex_y = (int)(y * texture->height);
-	printf("X: %f\n", x);
-	printf("Y: %f\n", y);
-	printf("WIDTH: %d\n", texture->width);
-	printf("HEIGHT: %d\n", texture->height);
 	tex_x = fmax(0, fmin(tex_x, texture->width - 1));
 	tex_y = fmax(0, fmin(tex_y, texture->height - 1));
-	printf("TEX_X: %d\n", tex_x);
-	printf("TEX_Y: %d\n", tex_y);
 	color = texture->pixels[tex_y * texture->width + tex_x];
-	printf("COLOR: %X\n", color);
-	return (color);
+	(void) color;
+	return (0xFFFFFFFF);
 }
 
 double	ft_get_tex_y(int y, t_wall_info wall_info)

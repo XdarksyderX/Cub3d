@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   MLX42_Int.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/27 23:55:34 by W2Wizard          #+#    #+#             */
-/*   Updated: 2024/02/25 12:57:56 by migarci2         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   MLX42_Int.h                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: W2Wizard <main@w2wizard.dev>                 +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/12/27 23:55:34 by W2Wizard      #+#    #+#                 */
+/*   Updated: 2022/07/21 10:46:43 by sbos          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,11 @@ extern int32_t mlx_settings[MLX_SETTINGS_MAX];
 // A single vertex, identical to the layout in the shader.
 typedef struct vertex
 {
-	double	x;
-	double	y;
-	double	z;
-	double	u;
-	double	v;
+	float	x;
+	float	y;
+	float	z;
+	float	u;
+	float	v;
 	int8_t	tex;
 }	vertex_t;
 

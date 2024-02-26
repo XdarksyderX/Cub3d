@@ -2005,7 +2005,7 @@ https://github.com/lvandeve/lodepng
     Also various fixes, such as in the deflate and the padding bits code.
 *) 13 jan 2008: Added ability to encode Adam7-interlaced images. Improved
     filtering code of encoder.
-*) 09 jan 2008: (!) changed LodePNG to use ISO C90 instead of C++. A
+*) 07 jan 2008: (!) changed LodePNG to use ISO C90 instead of C++. A
     C++ wrapper around this provides an interface almost identical to before.
     Having LodePNG be pure ISO C90 makes it more portable. The C and C++ code
     are together in these files but it works both for C and C++ compilers.
@@ -2035,7 +2035,7 @@ https://github.com/lvandeve/lodepng
     greyscale type to 8-bit greyscale with or without alpha.
 *) 21 jan 2007: (!) Totally changed the interface. It allows more color types
     to convert to and is more uniform. See the manual for how it works now.
-*) 09 jan 2007: Some cleanup & fixes, and a few changes over the last days:
+*) 07 jan 2007: Some cleanup & fixes, and a few changes over the last days:
     encode/decode custom tEXt chunks, separate classes for zlib & deflate, and
     at last made the decoder give errors for incorrect Adler32 or Crc.
 *) 01 jan 2007: Fixed bug with encoding PNGs with less than 8 bits per channel.
@@ -2065,11 +2065,11 @@ https://github.com/lvandeve/lodepng
     happened on PNGs with an uncompressed block.
 *) 16 jun 2006: Internally changed unsigned into unsigned where
     needed, and performed some optimizations.
-*) 09 jun 2006: (!) Renamed functions to decodePNG and placed them
+*) 07 jun 2006: (!) Renamed functions to decodePNG and placed them
     in LodePNG namespace. Changed the order of the parameters. Rewrote the
     documentation in the header. Renamed files to lodepng.cpp and lodepng.h
 *) 22 apr 2006: Optimized and improved some code
-*) 09 sep 2005: (!) Changed to std::vector interface
+*) 07 sep 2005: (!) Changed to std::vector interface
 *) 12 aug 2005: Initial release (C++, decoder only)
 
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   mlx_window.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 01:14:59 by W2wizard          #+#    #+#             */
-/*   Updated: 2024/02/25 12:57:56 by migarci2         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   mlx_window.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: W2wizard <main@w2wizard.dev>                 +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/02/08 01:14:59 by W2wizard      #+#    #+#                 */
+/*   Updated: 2022/11/22 09:06:54 by jvan-hal      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@
 void mlx_update_matrix(const mlx_t* mlx)
 {
 	const mlx_ctx_t* mlxctx = mlx->context;
-	const double depth = mlxctx->zdepth;
+	const float depth = mlxctx->zdepth;
 
 	/**
 	 * In case the setting to stretch the image is set, we maintain the width and height but not
 	 * the depth.
 	 */
-	const double width = mlx_settings[MLX_STRETCH_IMAGE] ? mlxctx->initialWidth : mlx->width;
-	const double height = mlx_settings[MLX_STRETCH_IMAGE] ? mlxctx->initialHeight : mlx->height;
+	const float width = mlx_settings[MLX_STRETCH_IMAGE] ? mlxctx->initialWidth : mlx->width;
+	const float height = mlx_settings[MLX_STRETCH_IMAGE] ? mlxctx->initialHeight : mlx->height;
 
-	const double matrix[16] = {
+	const float matrix[16] = {
 		2.f / width, 0, 0, 0,
 		0, 2.f / -(height), 0, 0,
 		0, 0, -2.f / (depth - -depth), 0,

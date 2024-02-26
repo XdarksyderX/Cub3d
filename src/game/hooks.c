@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 21:59:41 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/26 00:33:32 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/26 12:05:33 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,7 @@ static void	ft_loop_hook(void *data)
 	if (mlx_is_key_down(game->mlx, RIGHT_ARROW_KEY))
 		changed |= ft_rotate(game, RIGHT_ARROW_KEY);
 	if (changed)
-	{
 		ft_render(game);
-		printf("(%f, %f, %f)\n", game->map->player->x,
-			game->map->player->y, game->map->player->angle * 180 / PI);
-	}
 }
 
 void	ft_setup_hooks(t_game *game)

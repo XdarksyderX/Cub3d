@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 20:32:18 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/26 11:03:57 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/26 12:10:08 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # define FOV 1.0471975512 // 60 degrees in radians
 # define TILE_SIZE 64
 # define TEXTURE_SIZE 64
-# define STEP_SIZE 4
+# define STEP_SIZE 1
 
 # define MOVE_STEP 16
 
@@ -44,7 +44,7 @@
 # define LEFT_KEY MLX_KEY_A		// A
 # define RIGHT_KEY MLX_KEY_D	// D
 
-# define ANGLE_STEP 0.05
+# define ANGLE_STEP 0.1
 
 # define LEFT_ARROW_KEY MLX_KEY_LEFT
 # define RIGHT_ARROW_KEY MLX_KEY_RIGHT
@@ -101,13 +101,15 @@ void			ft_render(t_game *game);
 
 uint32_t		mlx_get_pixel_color(mlx_image_t *image, uint32_t x, uint32_t y);
 void			*ft_get_texture(double angle, t_game *game);
-uint32_t		ft_get_texture_pixel(double x, double y, mlx_texture_t *texture);
 double			ft_get_tex_y(int y, t_wall_info wall_info);
 double			ft_get_tex_x(double hit_ratio);
+uint32_t		ft_get_texture_pixel(double x, double y,
+					mlx_texture_t *texture);
 
-bool		ft_get_hit_point(double *x, double *y, double angle, t_map *map);
-void		ft_free_map(t_map	*map);
-void		ft_put_wall_line(mlx_image_t *img, t_ray_info ray_info,
-				t_wall_info wall_info, mlx_texture_t *texture);
+void			ft_free_map(t_map	*map);
+bool			ft_get_hit_point(double *x, double *y,
+					double angle, t_map *map);
+void			ft_put_wall_line(mlx_image_t *img, t_ray_info ray_info,
+					t_wall_info wall_info, mlx_texture_t *texture);
 
 #endif
