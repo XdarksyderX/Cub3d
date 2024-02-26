@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 20:32:06 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/26 12:51:22 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/26 16:07:42 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ static t_player	*ft_init_player(t_config *config)
 		free(player);
 		return (NULL);
 	}
-	player->x = (pos[0] * TILE_SIZE) + (TILE_SIZE / 2);
-	player->y = (pos[1] * TILE_SIZE) + (TILE_SIZE / 2);
+	player->x = (pos[1] * TILE_SIZE) + (TILE_SIZE / 2);
+	player->y = (pos[0] * TILE_SIZE) + (TILE_SIZE / 2);
 	if (pos[2] == 'N')
 		player->angle = NORTH_ANGLE;
 	else if (pos[2] == 'E')

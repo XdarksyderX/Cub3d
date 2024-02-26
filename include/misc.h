@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:17:18 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/25 13:44:32 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/26 17:55:10 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdbool.h>
+# include <math.h>
 
+# include "MLX42.h"
 # include "libft.h"
 # include "parsing.h"
 
@@ -35,14 +37,16 @@ typedef struct s_flood
 	int		height;
 }	t_flood;
 
-void	ft_usage(void);
+void		ft_usage(void);
 
-char	*ft_sanitize_line(char *str);
+char		*ft_sanitize_line(char *str);
 
-bool	is_map_fully_enclosed(char **map, int width, int height);
+bool		is_map_fully_enclosed(char **map, int width, int height);
 
-void	ft_free_matrix(void **map, int n);
-int		ft_matrix_len(void **matrix);
-void	**ft_matrix_dup(void **matrix);
+void		ft_free_matrix(void **map, int n);
+bool		ft_have_extension(char *file, char *ext);
+int			ft_matrix_len(void **matrix);
+void		**ft_matrix_dup(void **matrix);
+uint32_t	ft_apply_shade(uint32_t color, float shade_factor);
 
 #endif

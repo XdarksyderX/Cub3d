@@ -6,11 +6,22 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 12:45:52 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/26 12:46:32 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/26 18:23:06 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
+
+static void	ft_calc_dist(t_ray_info *ray_info, t_map *map)
+{
+	double	dist_x;
+	double	dist_y;
+
+	dist_x = ray_info->ray_x - map->player->x;
+	dist_y = ray_info->ray_y - map->player->y;
+	ray_info->dist = sqrt(dist_x * dist_x + dist_y * dist_y);
+	ray_info->dist *= cos(ray_info->angle - map->player->angle);
+}
 
 static bool	ft_is_wall(double x, double y, t_map *map)
 {
@@ -27,26 +38,29 @@ static bool	ft_is_wall(double x, double y, t_map *map)
 }
 
 //TRUE: HIT HORIZONTAL | FALSE: HIT VERTICAL
-bool	ft_get_hit_point(double *x, double *y, double angle, t_map *map)
+void	ft_get_hit_point(t_ray_info *ray_info, t_map *map)
 {
-	double	x_step;
-	double	y_step;
-	double	x_prev;
-	double	y_prev;
-
-	x_prev = *x;
-	y_prev = *y;
-	x_step = cos(angle) * STEP_SIZE;
-	y_step = sin(angle) * STEP_SIZE;
-	while (!ft_is_wall(*x, *y, map))
+	ray_info->x_prev = ray_info->ray_x;
+	ray_info->y_prev = ray_info->ray_y;
+	ray_info->x_step = cos(ray_info->angle) * STEP_SIZE;
+	ray_info->y_step = sin(ray_info->angle) * STEP_SIZE;
+	while (!ft_is_wall(ray_info->ray_x, ray_info->ray_y, map))
 	{
-		x_prev = *x;
-		y_prev = *y;
-		*x += x_step;
-		*y += y_step;
+		ray_info->x_prev = ray_info->ray_x;
+		ray_info->y_prev = ray_info->ray_y;
+		ray_info->ray_x += ray_info->x_step;
+		ray_info->ray_y += ray_info->y_step;
 	}
-	if (fabs(*y - y_prev) < fabs(*x - x_prev))
-		return (true);
+	if (fabs(ray_info->ray_y - ray_info->y_prev)
+		< fabs(ray_info->ray_x - ray_info->x_prev))
+	{
+		ray_info->is_hit_horizontal = true;
+		ray_info->hit_ratio = fmod(ray_info->ray_x, TILE_SIZE) / TILE_SIZE;
+	}
 	else
-		return (false);
+	{
+		ray_info->is_hit_horizontal = false;
+		ray_info->hit_ratio = fmod(ray_info->ray_y, TILE_SIZE) / TILE_SIZE;
+	}
+	ft_calc_dist(ray_info, map);
 }

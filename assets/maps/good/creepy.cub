@@ -1,15 +1,16 @@
-NO textures/simonkraft/respawn_anchor_side0.xpm
-EA textures/simonkraft/respawn_anchor_side2.xpm
-SO textures/simonkraft/respawn_anchor_side4.xpm
-WE textures/simonkraft/respawn_anchor_side3.xpm
+NO assets/textures/NORTH.png
+SO assets/textures/SOUTH.png
+WE assets/textures/WEST.png
+EA assets/textures/EAST.png
 
-C 35,19,73
-F 15,6,40
+F 164,169,20
+C 153,204,255
+
 
 111111111111111
 111111000111111
 111110000011111
-1111000N0001111
+1111000N0000001
 111000000000111
 110000000000011
 100001111100001

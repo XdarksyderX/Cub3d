@@ -6,7 +6,7 @@
 #    By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/19 20:51:28 by migarci2          #+#    #+#              #
-#    Updated: 2024/02/26 11:32:36 by migarci2         ###   ########.fr        #
+#    Updated: 2024/02/26 15:07:55 by migarci2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ SRCs     =  $(SRC_DIR)/main.c \
 			$(SRC_DIR)/game/rotate.c \
 			$(SRC_DIR)/game/raycast.c \
 			$(SRC_DIR)/game/texture.c \
+			$(SRC_DIR)/game/sliding.c \
 
 OBJ_DIR  = obj
 OBJs     = $(SRCs:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
