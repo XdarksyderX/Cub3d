@@ -14,7 +14,7 @@
 
 //= Private =//
 
-static void mlx_scroll_cb(GLFWwindow* window, float xoffset, float yoffset)
+static void mlx_scroll_cb(GLFWwindow* window, double xoffset, double yoffset)
 {
 	const mlx_t* mlx = glfwGetWindowUserPointer(window);
 	const mlx_scroll_t scroll_hook = ((mlx_ctx_t*)mlx->context)->scroll_hook;
@@ -30,7 +30,7 @@ static void mlx_mouse_cb(GLFWwindow* window, int32_t button, int32_t action, int
 	mouse_hook.func(button, action, mods, mouse_hook.param);
 }
 
-static void mlx_cursor_cb(GLFWwindow* window, float xpos, float ypos)
+static void mlx_cursor_cb(GLFWwindow* window, double xpos, double ypos)
 {
 	const mlx_t* mlx = glfwGetWindowUserPointer(window);
 	const mlx_cursor_t cursor_hook = ((mlx_ctx_t*)mlx->context)->cursor_hook;
@@ -84,7 +84,7 @@ void mlx_set_mouse_pos(mlx_t* mlx, int32_t x, int32_t y)
 {
 	MLX_NONNULL(mlx);
 
-	glfwSetCursorPos(mlx->window, (float)x, (float)y);
+	glfwSetCursorPos(mlx->window, (double)x, (double)y);
 }
 
 void mlx_get_mouse_pos(mlx_t* mlx, int32_t* x, int32_t* y)
@@ -93,7 +93,7 @@ void mlx_get_mouse_pos(mlx_t* mlx, int32_t* x, int32_t* y)
 	MLX_NONNULL(x);
 	MLX_NONNULL(y);
 
-	float xd, yd;
+	double xd, yd;
 	glfwGetCursorPos(mlx->window, &xd, &yd);
 	*x = (int32_t)xd;
 	*y = (int32_t)yd;

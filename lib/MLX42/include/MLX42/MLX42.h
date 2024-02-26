@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   MLX42.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/28 02:29:06 by W2Wizard          #+#    #+#             */
-/*   Updated: 2024/02/26 12:43:36 by migarci2         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   MLX42.h                                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: W2Wizard <main@w2wizard.dev>                 +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/12/28 02:29:06 by W2Wizard      #+#    #+#                 */
+/*   Updated: 2023/03/30 16:23:19 by ntamayo-      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -363,7 +363,7 @@ typedef struct mlx
 	void*		context;
 	int32_t		width;
 	int32_t		height;
-	float		delta_time;
+	double		delta_time;
 }	mlx_t;
 
 // The error codes used to identify the correct error message.
@@ -411,7 +411,7 @@ typedef enum mlx_settings
  * @param[in] ydelta The mouse y delta.
  * @param[in] param Additional parameter to pass on to the function.
  */
-typedef void (*mlx_scrollfunc)(float xdelta, float ydelta, void* param);
+typedef void (*mlx_scrollfunc)(double xdelta, double ydelta, void* param);
 
 /**
  * Callback function used to handle mouse actions.
@@ -430,7 +430,7 @@ typedef void (*mlx_mousefunc)(mouse_key_t button, action_t action, modifier_key_
  * @param[in] ypos The mouse y position.
  * @param[in] param Additional parameter to pass on to the function.
  */
-typedef void (*mlx_cursorfunc)(float xpos, float ypos, void* param);
+typedef void (*mlx_cursorfunc)(double xpos, double ypos, void* param);
 
 /**
  * Callback function used to handle key presses.
@@ -545,7 +545,7 @@ void mlx_terminate(mlx_t* mlx);
  * 
  * @return The amount of time elapsed in seconds.
  */
-float mlx_get_time(void);
+double mlx_get_time(void);
 
 //= Window/Monitor Functions =//
 

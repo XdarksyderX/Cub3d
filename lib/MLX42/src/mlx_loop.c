@@ -94,7 +94,7 @@ void mlx_loop(mlx_t* mlx)
 {
 	MLX_NONNULL(mlx);
 
-	float start, oldstart = 0;
+	double start, oldstart = 0;
 	while (!glfwWindowShouldClose(mlx->window))
 	{
 		start = glfwGetTime();
