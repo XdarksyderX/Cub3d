@@ -39,19 +39,19 @@ bool	ft_move_forward_backward(t_game *game, int key)
 	double	new_x;
 	double	new_y;
 
+	new_x = 0;
+	new_y = 0;
 	if (key == UP_KEY)
 	{
-		new_x = game->map->player->x
-			+ cos(game->map->player->angle) * MOVE_STEP;
-		new_y = game->map->player->y
-			+ sin(game->map->player->angle) * MOVE_STEP;
+		new_x = game->map->player->x + cos(game->map->player->angle) * MV_STEP;
+		new_y = game->map->player->y + sin(game->map->player->angle) * MV_STEP;
 	}
 	else if (key == DOWN_KEY)
 	{
 		new_x = game->map->player->x
-			- cos(game->map->player->angle) * MOVE_STEP;
+			- cos(game->map->player->angle) * MV_STEP;
 		new_y = game->map->player->y
-			- sin(game->map->player->angle) * MOVE_STEP;
+			- sin(game->map->player->angle) * MV_STEP;
 	}
 	if (ft_is_position_valid(game, new_x, new_y))
 	{
@@ -68,17 +68,19 @@ bool	ft_strafe(t_game *game, int key)
 	double	new_x;
 	double	new_y;
 
+	new_x = 0;
+	new_y = 0;
 	if (key == LEFT_KEY)
 	{
 		angle = game->map->player->angle - PI_2;
-		new_x = game->map->player->x + cos(angle) * MOVE_STEP;
-		new_y = game->map->player->y + sin(angle) * MOVE_STEP;
+		new_x = game->map->player->x + cos(angle) * MV_STEP;
+		new_y = game->map->player->y + sin(angle) * MV_STEP;
 	}
 	else if (key == RIGHT_KEY)
 	{
 		angle = game->map->player->angle + PI_2;
-		new_x = game->map->player->x + cos(angle) * MOVE_STEP;
-		new_y = game->map->player->y + sin(angle) * MOVE_STEP;
+		new_x = game->map->player->x + cos(angle) * MV_STEP;
+		new_y = game->map->player->y + sin(angle) * MV_STEP;
 	}
 	if (ft_is_position_valid(game, new_x, new_y))
 	{

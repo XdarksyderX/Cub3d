@@ -37,7 +37,7 @@
 # define TEXTURE_SIZE 64
 # define STEP_SIZE 1
 
-# define MOVE_STEP 16
+# define MV_STEP 16
 
 # define UP_KEY MLX_KEY_W		// W
 # define DOWN_KEY MLX_KEY_S		// S
