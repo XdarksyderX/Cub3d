@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 20:19:35 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/26 12:15:50 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/26 12:45:33 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,22 @@ uint32_t	mlx_get_pixel_color(mlx_texture_t *texture, uint32_t x, uint32_t y)
 	return (color);
 }
 
-void	*ft_get_texture(double angle, t_game *game)
+void	*ft_get_texture(t_ray_info ray_info, t_game *game)
 {
-	angle = fmod(angle, 2 * PI);
-	if (angle < 0)
-		angle += 2 * PI;
-	if (angle >= 0 && angle < PI / 2)
-		return (game->textures[EAST_TEXTURE]);
-	else if (angle >= PI / 2 && angle < PI)
-		return (game->textures[NORTH_TEXTURE]);
-	else if (angle >= PI && angle < 3 * PI / 2)
-		return (game->textures[WEST_TEXTURE]);
-	else if (angle >= 3 * PI / 2 && angle < 2 * PI)
-		return (game->textures[SOUTH_TEXTURE]);
+	if (ray_info.is_hit_horizontal)
+	{
+		if (ray_info.ray_y >= 0)
+			return (game->textures[NORTH_TEXTURE]);
+		else
+			return (game->textures[SOUTH_TEXTURE]);
+	}
+	else
+	{
+		if (ray_info.ray_x >= 0)
+			return (game->textures[WEST_TEXTURE]);
+		else
+			return (game->textures[EAST_TEXTURE]);
+	}
 	return (NULL);
 }
 
@@ -53,7 +56,8 @@ uint32_t	ft_get_texture_pixel(double x, double y, mlx_texture_t *texture)
 	tex_x = fmax(0, fmin(tex_x, texture->width - 1));
 	tex_y = fmax(0, fmin(tex_y, texture->height - 1));
 	color = mlx_get_pixel_color(texture, tex_x, tex_y);
-	return (color);
+	(void) color;
+	return (0xFFFFFFFF);
 }
 
 double	ft_get_tex_y(int y, t_wall_info wall_info)

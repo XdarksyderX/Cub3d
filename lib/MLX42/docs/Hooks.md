@@ -23,7 +23,7 @@ You can however have multiple generic hooks.
  * @param[in] y The mouse y delta.
  * @param[in] param Additional parameter to pass to the function.
  */
-typedef void (*mlx_scrollfunc)(double xdelta, double ydelta, void* param);
+typedef void (*mlx_scrollfunc)(float xdelta, float ydelta, void* param);
 
 /**
  * This function sets the scroll callback, which is called when a scrolling 
@@ -199,7 +199,7 @@ int32_t	main(void)
 #define WIDTH 720
 #define HEIGHT 480
 
-void my_scrollhook(double xdelta, double ydelta, void* param)
+void my_scrollhook(float xdelta, float ydelta, void* param)
 {
 	// Simple up or down detection.
 	if (ydelta > 0)

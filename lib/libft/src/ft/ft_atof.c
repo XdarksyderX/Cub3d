@@ -13,22 +13,22 @@
 #include "libft.h"
 
 /**
- * Convierte una cadena de caracteres en un valor de tipo double/double.
+ * Convierte una cadena de caracteres en un valor de tipo float/float.
  *
  * Esta función toma una cadena de caracteres que representa un número decimal
- * y la convierte en un valor de tipo double. Puede manejar números enteros y
+ * y la convierte en un valor de tipo float. Puede manejar números enteros y
  * decimales en formato estándar (por ejemplo, "123.45") o con coma decimal
  * (por ejemplo, "123,45").
  *
- * @param str La cadena de caracteres que se va a convertir a double.
+ * @param str La cadena de caracteres que se va a convertir a float.
  *
- * @return El valor double correspondiente a la cadena de caracteres.
+ * @return El valor float correspondiente a la cadena de caracteres.
  * Si la cadena no es un número válido, devuelve 0.0;
  */
-double	ft_atof(char *str)
+float	ft_atof(char *str)
 {
 	int		num;
-	double	rest;
+	float	rest;
 	char	*tmp;
 	int		i;
 
