@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 20:32:18 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/26 18:08:05 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/26 18:55:07 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,8 @@ bool			ft_move_forward_backward(t_game *game, int key);
 bool			ft_strafe(t_game *game, int key);
 bool			ft_adjust_movement_for_wall(t_game *game,
 					double *new_x, double *new_y, double angle);
-bool			ft_adjust_strafe_for_wall(t_game *game, double *new_x,
-					double *new_y, double angle);
+bool			ft_adjust_strafe_for_wall(t_game *game,
+					double *new_x, double *new_y);
 bool			ft_rotate(t_game *game, int key);
 void			ft_render(t_game *game);
 
