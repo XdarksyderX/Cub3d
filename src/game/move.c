@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 20:25:12 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/26 12:08:51 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/26 12:13:18 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,13 @@ bool	ft_strafe(t_game *game, int key)
 
 	if (key == LEFT_KEY)
 	{
-		angle = game->map->player->angle + PI_2;
+		angle = game->map->player->angle - PI_2;
 		new_x = game->map->player->x + cos(angle) * MOVE_STEP;
 		new_y = game->map->player->y + sin(angle) * MOVE_STEP;
 	}
 	else if (key == RIGHT_KEY)
 	{
-		angle = game->map->player->angle - PI_2;
+		angle = game->map->player->angle + PI_2;
 		new_x = game->map->player->x + cos(angle) * MOVE_STEP;
 		new_y = game->map->player->y + sin(angle) * MOVE_STEP;
 	}

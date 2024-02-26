@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 20:32:18 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/26 12:10:08 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/26 12:16:20 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ bool			ft_strafe(t_game *game, int key);
 bool			ft_rotate(t_game *game, int key);
 void			ft_render(t_game *game);
 
-uint32_t		mlx_get_pixel_color(mlx_image_t *image, uint32_t x, uint32_t y);
+uint32_t		mlx_get_pixel_color(mlx_texture_t *texture, uint32_t x, uint32_t y);
 void			*ft_get_texture(double angle, t_game *game);
 double			ft_get_tex_y(int y, t_wall_info wall_info);
 double			ft_get_tex_x(double hit_ratio);
