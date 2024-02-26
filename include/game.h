@@ -37,14 +37,14 @@
 # define TEXTURE_SIZE 64
 # define STEP_SIZE 1
 
-# define MV_STEP 16
+# define MV_STEP 128
 
 # define UP_KEY MLX_KEY_W		// W
 # define DOWN_KEY MLX_KEY_S		// S
 # define LEFT_KEY MLX_KEY_A		// A
 # define RIGHT_KEY MLX_KEY_D	// D
 
-# define ANGLE_STEP 0.1
+# define ANGLE_STEP 1.5
 
 # define LEFT_ARROW_KEY MLX_KEY_LEFT
 # define RIGHT_ARROW_KEY MLX_KEY_RIGHT

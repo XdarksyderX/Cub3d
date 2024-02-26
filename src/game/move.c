@@ -43,15 +43,15 @@ bool	ft_move_forward_backward(t_game *game, int key)
 	new_y = 0;
 	if (key == UP_KEY)
 	{
-		new_x = game->map->player->x + cos(game->map->player->angle) * MV_STEP;
-		new_y = game->map->player->y + sin(game->map->player->angle) * MV_STEP;
+		new_x = game->map->player->x + cos(game->map->player->angle) * MV_STEP * game->mlx->delta_time;
+		new_y = game->map->player->y + sin(game->map->player->angle) * MV_STEP * game->mlx->delta_time;
 	}
 	else if (key == DOWN_KEY)
 	{
 		new_x = game->map->player->x
-			- cos(game->map->player->angle) * MV_STEP;
+			- cos(game->map->player->angle) * MV_STEP * game->mlx->delta_time;
 		new_y = game->map->player->y
-			- sin(game->map->player->angle) * MV_STEP;
+			- sin(game->map->player->angle) * MV_STEP * game->mlx->delta_time;
 	}
 	if (ft_is_position_valid(game, new_x, new_y))
 	{
@@ -73,14 +73,14 @@ bool	ft_strafe(t_game *game, int key)
 	if (key == LEFT_KEY)
 	{
 		angle = game->map->player->angle - PI_2;
-		new_x = game->map->player->x + cos(angle) * MV_STEP;
-		new_y = game->map->player->y + sin(angle) * MV_STEP;
+		new_x = game->map->player->x + cos(angle) * MV_STEP * game->mlx->delta_time;
+		new_y = game->map->player->y + sin(angle) * MV_STEP * game->mlx->delta_time;
 	}
 	else if (key == RIGHT_KEY)
 	{
 		angle = game->map->player->angle + PI_2;
-		new_x = game->map->player->x + cos(angle) * MV_STEP;
-		new_y = game->map->player->y + sin(angle) * MV_STEP;
+		new_x = game->map->player->x + cos(angle) * MV_STEP * game->mlx->delta_time;
+		new_y = game->map->player->y + sin(angle) * MV_STEP * game->mlx->delta_time;
 	}
 	if (ft_is_position_valid(game, new_x, new_y))
 	{
@@ -95,7 +95,7 @@ bool	ft_rotate(t_game *game, int key)
 {
 	if (key == LEFT_ARROW_KEY)
 	{
-		game->map->player->angle -= ANGLE_STEP;
+		game->map->player->angle -= ANGLE_STEP * game->mlx->delta_time;
 		if (game->map->player->angle < 0)
 		{
 			game->map->player->angle += 2 * PI;
@@ -104,7 +104,7 @@ bool	ft_rotate(t_game *game, int key)
 	}
 	else if (key == RIGHT_ARROW_KEY)
 	{
-		game->map->player->angle += ANGLE_STEP;
+		game->map->player->angle += ANGLE_STEP * game->mlx->delta_time;
 		if (game->map->player->angle >= 2 * PI)
 		{
 			game->map->player->angle -= 2 * PI;
