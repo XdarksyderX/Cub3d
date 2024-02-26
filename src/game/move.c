@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 20:25:12 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/26 12:13:18 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/26 12:44:59 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static bool	ft_in_limits(int map_x, int map_y, t_game *game)
 	return (true);
 }
 
-static bool	ft_is_position_valid(t_game *game, double new_x, double new_y)
+static bool	ft_is_position_valid(t_game *game, float new_x, float new_y)
 {
 	int	map_x;
 	int	map_y;
@@ -36,8 +36,8 @@ static bool	ft_is_position_valid(t_game *game, double new_x, double new_y)
 
 bool	ft_move_forward_backward(t_game *game, int key)
 {
-	double	new_x;
-	double	new_y;
+	float	new_x;
+	float	new_y;
 
 	new_x = 0;
 	new_y = 0;
@@ -64,9 +64,9 @@ bool	ft_move_forward_backward(t_game *game, int key)
 
 bool	ft_strafe(t_game *game, int key)
 {
-	double	angle;
-	double	new_x;
-	double	new_y;
+	float	angle;
+	float	new_x;
+	float	new_y;
 
 	new_x = 0;
 	new_y = 0;

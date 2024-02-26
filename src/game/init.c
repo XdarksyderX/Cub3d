@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 20:32:06 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/26 10:56:07 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/26 12:51:22 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ t_game	*ft_init_game(char *config_file)
 	ft_init_textures(game, map_config);
 	ft_free_config(map_config);
 	ft_setup_hooks(game);
+	game->last_frame = mlx_new_image(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	ft_render(game);
 	return (game);
 }

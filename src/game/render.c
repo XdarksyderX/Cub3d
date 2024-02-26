@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 20:59:52 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/26 12:01:00 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/26 12:51:38 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_draw_wall(mlx_image_t *img, t_ray_info ray_info, t_game *game)
 	mlx_texture_t	*texture;
 	t_wall_info		wall_info;
 
-	texture = ft_get_texture(ray_info.angle, game);
+	texture = ft_get_texture(ray_info, game);
 	wall_info.wall_height = (int)((TILE_SIZE / ray_info.dist)
 			* ((WINDOW_WIDTH / 2) / tan(FOV / 2)));
 	wall_info.wall_start = (WINDOW_HEIGHT / 2)
@@ -40,7 +40,9 @@ static	void	ft_cast_ray(mlx_image_t *img, double angle, int x, t_game *game)
 
 	ray_x = game->map->player->x;
 	ray_y = game->map->player->y;
-	if (ft_get_hit_point(&ray_x, &ray_y, angle, game->map))
+	ray_info.is_hit_horizontal = ft_get_hit_point(&ray_x, &ray_y,
+						angle, game->map);
+	if (ray_info.is_hit_horizontal)
 		ray_info.hit_ratio = fmod(ray_x, TILE_SIZE) / TILE_SIZE;
 	else
 		ray_info.hit_ratio = fmod(ray_y, TILE_SIZE) / TILE_SIZE;
@@ -49,6 +51,8 @@ static	void	ft_cast_ray(mlx_image_t *img, double angle, int x, t_game *game)
 	ray_info.dist = ray_info.dist * cosf(game->map->player->angle - angle);
 	ray_info.angle = angle;
 	ray_info.x = x;
+	ray_info.ray_x = ray_x;
+	ray_info.ray_y = ray_y;
 	ft_draw_wall(img, ray_info, game);
 }
 
@@ -101,7 +105,9 @@ void	ft_render(t_game *game)
 		ft_putstr_fd("Error\nFailed to create image\n", 2);
 		exit(EXIT_FAILURE);
 	}
+	mlx_delete_image(game->mlx, game->last_frame);
 	ft_draw_ceiling_floor(img, game);
 	ft_draw_walls(img, game);
+	game->last_frame = img;
 	mlx_image_to_window(game->mlx, img, (uint32_t) 0, (uint32_t) 0);
 }
