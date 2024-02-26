@@ -38,6 +38,7 @@ SRCs     =  $(SRC_DIR)/main.c \
 			$(SRC_DIR)/game/hooks.c \
 			$(SRC_DIR)/game/render.c \
 			$(SRC_DIR)/game/move.c \
+			$(SRC_DIR)/game/rotate.c \
 			$(SRC_DIR)/game/raycast.c \
 			$(SRC_DIR)/game/texture.c \
 
