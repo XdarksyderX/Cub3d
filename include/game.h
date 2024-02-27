@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 20:32:18 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/26 18:55:07 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/27 16:24:01 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 # define WINDOW_HEIGHT 768
 
 # define SHADING_QUOFICIENT 0.0007f
+
+# define PLAYER_WIDTH 16
+# define PLAYER_HEIGHT 16
 
 # define EAST_ANGLE 0		// 0 degrees in radians		
 # define NORTH_ANGLE PI3_2	// 90 degrees in radians
@@ -104,7 +107,8 @@ t_game			*ft_init_game(char *config_file);
 void			ft_setup_hooks(t_game *game);
 void			ft_free_game(t_game *game);
 
-bool			ft_is_position_valid(t_game *game, double new_x, double new_y);
+bool			ft_is_position_valid(t_game *game, double new_pos[2],
+					double width, double height);
 bool			ft_move_forward_backward(t_game *game, int key);
 bool			ft_strafe(t_game *game, int key);
 bool			ft_adjust_movement_for_wall(t_game *game,

@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 20:19:35 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/26 17:55:51 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/27 18:59:22 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ uint32_t	ft_get_texture_pixel(double x, double y, mlx_texture_t *texture)
 	tex_x = fmax(0, fmin(tex_x, texture->width - 1));
 	tex_y = fmax(0, fmin(tex_y, texture->height - 1));
 	color = mlx_get_pixel_color(texture, tex_x, tex_y);
-	(void) color;
-	return (0xFFFFFFFF);
+	return (color);
 }
 
 double	ft_get_tex_y(int y, t_wall_info wall_info)
@@ -61,7 +60,6 @@ void	ft_put_wall_line(mlx_image_t *img, t_ray_info ray_info,
 	int				y;
 	double			tex_x;
 	double			tex_y;
-	float			shade_factor;
 	uint32_t		color;
 
 	y = wall_info.wall_start;
@@ -70,8 +68,6 @@ void	ft_put_wall_line(mlx_image_t *img, t_ray_info ray_info,
 		tex_x = ray_info.hit_ratio;
 		tex_y = ft_get_tex_y(y, wall_info);
 		color = ft_get_texture_pixel(tex_x, tex_y, texture);
-		shade_factor = 1 / (1 + ray_info.dist * SHADING_QUOFICIENT);
-		color = ft_apply_shade(color, shade_factor);
 		mlx_put_pixel(img, ray_info.x, y, color);
 		y++;
 	}
