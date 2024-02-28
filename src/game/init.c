@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 20:32:06 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/28 12:12:50 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/28 21:48:43 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,18 @@
 
 void	ft_free_game(t_game *game)
 {
+	int	i;
+
 	if (!game)
 		return ;
+	mlx_delete_image(game->mlx, game->last_frame);
+	i = 0;
+	while (i < 4)
+	{
+		if (game->textures[i])
+			mlx_delete_texture(game->textures[i]);
+		i++;
+	}
 	if (game->mlx)
 		mlx_terminate(game->mlx);
 	if (game->map)
@@ -63,6 +73,7 @@ static t_player	*ft_init_player(t_config *config)
 		player->angle = SOUTH_ANGLE;
 	else if (pos[2] == 'W')
 		player->angle = WEST_ANGLE;
+	free(pos);
 	return (player);
 }
 

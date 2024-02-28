@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 18:49:32 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/28 16:56:10 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/28 21:46:18 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,16 @@ bool	is_map_fully_enclosed(char **map, int width, int height)
 
 	player_coords = ft_find_player_pos(map);
 	if (player_coords[1] == -1 || player_coords[0] == -1)
+	{
+		free(player_coords);
 		return (false);
+	}
 	data.map = map;
 	data.x = player_coords[1];
 	data.y = player_coords[0];
 	data.width = width;
 	data.height = height;
 	flood_fill(data);
+	free(player_coords);
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 18:34:05 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/26 10:55:45 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/28 21:44:22 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,6 @@ bool	ft_check_config(t_config *config)
 		ft_putstr_fd("Error\nConfiguration error\n", STDERR_FILENO);
 		return (false);
 	}
-	free(map);
+	ft_free_matrix((void **)map, config->rows);
 	return (true);
 }
