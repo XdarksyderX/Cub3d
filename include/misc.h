@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:17:18 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/26 17:55:10 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/28 16:56:29 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@
 # define PI3_2 4.71238898038
 
 # define SPACES " \t\v\r"
+
+# define WALL '1'
+# define OPEN '0'
+# define FILLED '2'
 
 typedef struct s_flood
 {

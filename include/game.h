@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 20:32:18 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/28 14:20:07 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/28 21:31:26 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 
 # define WINDOW_WIDTH 1024
 # define WINDOW_HEIGHT 768
+
+# define X 0
+# define Y 1
 
 # define SHADING_QUOFICIENT 0.0007f
 
@@ -56,27 +59,17 @@
 
 # define ESC_KEY 53
 
-typedef struct s_dda
-{
-	double	delta_dist_x;
-	double	delta_dist_y;
-	double	side_dist_x;
-	double	side_dist_y;
-	int		step_x;
-	int		step_y;
-}	t_dda;
-
-
 typedef struct s_ray_info
 {
+	bool	is_vertical;
 	int		x;
-	bool	is_hit_horizontal;
-	double	x_prev;
-	double	y_prev;
-	double	ray_x;
-	double	ray_y;
-	double	y_step;
-	double	x_step;
+	int		step[2];
+	int		map_check[2];
+	double	player[2];
+	double	hit[2];
+	double	step_size[2];
+	double	dir[2];
+	double	len[2];
 	double	hit_ratio;
 	double	dist;
 	double	angle;
@@ -134,15 +127,15 @@ void			ft_render(t_game *game);
 
 uint32_t		mlx_get_pixel_color(mlx_texture_t *texture,
 					uint32_t x, uint32_t y);
-void			*ft_get_texture(t_ray_info ray_info, t_game *game);
+mlx_texture_t	*ft_get_texture(t_ray_info *ray_info, t_game *game);
 uint32_t		ft_get_texture_pixel(double x, double y,
 					mlx_texture_t *texture);
 void			ft_put_line(mlx_image_t *img, int pos[2],
 					int x, uint32_t color);
 
-int	ft_get_hit_direction(t_ray_info *ray_info);
+int				ft_get_hit_direction(t_ray_info *ray_info);
 
 void			ft_free_map(t_map	*map);
-void			ft_get_hit_point(t_ray_info *ray_info, t_map *map);
+void			ft_ray(t_game *game, double angle, t_ray_info *r);
 void			ft_put_wall_line(mlx_image_t *img, t_wall_info wall_info);
 #endif

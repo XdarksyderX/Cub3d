@@ -6,16 +6,12 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 18:49:32 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/28 12:13:48 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/28 16:56:10 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "misc.h"
 #include "parsing.h"
-
-#define WALL '1'
-#define OPEN '0'
-#define FILLED '2'
 
 bool	is_position_valid(t_flood data)
 {
