@@ -64,3 +64,28 @@ void	ft_get_hit_point(t_ray_info *ray_info, t_map *map)
 	}
 	ft_calc_dist(ray_info, map);
 }
+
+// Returns which side of a wall was hit. If ray coords are outside wall grid, return a negative int instead.
+// 0: North
+// 1: East
+// 2: West
+// 3: South
+int ft_get_hit_direction(t_ray_info *ray_info)
+{
+	int local_x;
+	int local_y;
+
+	local_x = (int)ray_info->ray_x % 64;
+	local_y = (int)ray_info->ray_y % 64;
+
+	if (local_x == 63 && (local_y >= 0 && local_y <= 63))
+		return (0);
+	else if (local_y == 0 && (local_x >= 0 && local_x <= 63))
+		return (1);
+	else if (local_y == 63 && (local_x >= 0 && local_x <= 63))
+		return (2);
+	else if (local_x == 0 && (local_y >= 0 && local_y <= 63))
+		return (3);
+	else
+		return (-1);
+}
