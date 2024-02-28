@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 20:32:06 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/26 16:07:42 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/28 12:12:50 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static void	ft_init_textures(t_game *game, t_config *config)
 	game->textures[SOUTH_TEXTURE] = mlx_load_png(config->south_texture_path);
 	game->textures[EAST_TEXTURE] = mlx_load_png(config->east_texture_path);
 	game->textures[WEST_TEXTURE] = mlx_load_png(config->west_texture_path);
-
 	if (!game->textures[NORTH_TEXTURE] || !game->textures[SOUTH_TEXTURE]
 		|| !game->textures[EAST_TEXTURE] || !game->textures[WEST_TEXTURE])
 	{

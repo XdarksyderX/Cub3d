@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 20:32:18 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/27 16:24:01 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/28 12:15:08 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,6 @@
 
 # define ESC_KEY 53
 
-typedef struct s_wall_info
-{
-	int	wall_start;
-	int	wall_end;
-	int	wall_height;
-}	t_wall_info;
-
 typedef struct s_ray_info
 {
 	int		x;
@@ -77,6 +70,16 @@ typedef struct s_ray_info
 	double	dist;
 	double	angle;
 }	t_ray_info;
+
+typedef struct s_wall_info
+{
+	int				wall_start;
+	int				wall_end;
+	int				wall_height;
+	t_ray_info		ray_info;
+	mlx_texture_t	*texture;
+	double			texture_offset;
+}	t_wall_info;
 
 typedef struct s_player
 {
@@ -121,13 +124,12 @@ void			ft_render(t_game *game);
 uint32_t		mlx_get_pixel_color(mlx_texture_t *texture,
 					uint32_t x, uint32_t y);
 void			*ft_get_texture(t_ray_info ray_info, t_game *game);
-double			ft_get_tex_y(int y, t_wall_info wall_info);
 uint32_t		ft_get_texture_pixel(double x, double y,
 					mlx_texture_t *texture);
+void			ft_put_line(mlx_image_t *img, int pos[2],
+					int x, uint32_t color);
 
 void			ft_free_map(t_map	*map);
 void			ft_get_hit_point(t_ray_info *ray_info, t_map *map);
-void			ft_put_wall_line(mlx_image_t *img, t_ray_info ray_info,
-					t_wall_info wall_info, mlx_texture_t *texture);
-
+void			ft_put_wall_line(mlx_image_t *img, t_wall_info wall_info);
 #endif

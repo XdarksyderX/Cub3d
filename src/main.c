@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 21:56:02 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/26 15:23:48 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/28 12:13:56 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,3 @@ int	main(int argc, char **argv)
 	}
 	mlx_loop(game->mlx);
 }
-
