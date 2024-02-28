@@ -6,7 +6,7 @@
 #    By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/19 20:51:28 by migarci2          #+#    #+#              #
-#    Updated: 2024/02/28 21:59:16 by migarci2         ###   ########.fr        #
+#    Updated: 2024/02/28 23:14:42 by migarci2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME     = cub3d
 
 
 CC       = gcc
-CFLAGS   = -Wall -Wextra -Werror
+CFLAGS   = -Wall -Wextra -Werror -O3
 
 ifeq ($(DEBUG),1)
     DEBUG = -DDEBUG=1

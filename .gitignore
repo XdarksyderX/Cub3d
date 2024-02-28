@@ -1,4 +1,5 @@
 .vscode/
+.idea/
 obj/*.o
 lib/libft/libft.a
 lib/libft/obj/*.o
