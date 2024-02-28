@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 20:32:18 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/28 12:15:08 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/28 14:20:07 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,17 @@
 # define RIGHT_ARROW_KEY MLX_KEY_RIGHT
 
 # define ESC_KEY 53
+
+typedef struct s_dda
+{
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	int		step_x;
+	int		step_y;
+}	t_dda;
+
 
 typedef struct s_ray_info
 {
@@ -128,6 +139,8 @@ uint32_t		ft_get_texture_pixel(double x, double y,
 					mlx_texture_t *texture);
 void			ft_put_line(mlx_image_t *img, int pos[2],
 					int x, uint32_t color);
+
+int	ft_get_hit_direction(t_ray_info *ray_info);
 
 void			ft_free_map(t_map	*map);
 void			ft_get_hit_point(t_ray_info *ray_info, t_map *map);

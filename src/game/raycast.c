@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 12:45:52 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/27 18:22:37 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/28 14:19:18 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,24 @@ void	ft_get_hit_point(t_ray_info *ray_info, t_map *map)
 		ray_info->hit_ratio = fmod(ray_info->ray_y, TILE_SIZE) / TILE_SIZE;
 	}
 	ft_calc_dist(ray_info, map);
+}
+
+int	ft_get_hit_direction(t_ray_info *ray_info)
+{
+	int	local_x;
+	int	local_y;
+
+	local_x = (int)ray_info->ray_x % 64;
+	local_y = (int)ray_info->ray_y % 64;
+
+	if (local_x == 63 && (local_y >= 0 && local_y <= 63))
+		return (0);
+	else if (local_y == 0 && (local_x >= 0 && local_x <= 63))
+		return (1);
+	else if (local_y == 63 && (local_x >= 0 && local_x <= 63))
+		return (2);
+	else if (local_x == 0 && (local_y >= 0 && local_y <= 63))
+		return (3);
+	else
+		return (-1);
 }
