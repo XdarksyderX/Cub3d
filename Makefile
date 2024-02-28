@@ -6,7 +6,7 @@
 #    By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/19 20:51:28 by migarci2          #+#    #+#              #
-#    Updated: 2024/02/28 11:28:43 by migarci2         ###   ########.fr        #
+#    Updated: 2024/02/28 21:59:16 by migarci2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,6 +85,11 @@ $(NAME): libraries $(OBJs)
 	@echo "Linking $@..."
 	@$(CC) $(OBJs) $(LIBS) -o $(NAME)
 	@echo "$@ compilation complete."
+
+norminette:
+	@echo "Checking norminette..."
+	@norminette $(SRC_DIR)
+	@norminette include
 
 clean:
 	@echo "Cleaning up object files..."

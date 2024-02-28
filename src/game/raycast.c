@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 12:45:52 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/28 21:07:45 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/02/28 21:57:54 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,14 @@ static	void	ft_init_ray(t_ray_info *r, double angle, t_game *game)
 	if (r->dir[X] < 0)
 		r->len[X] = (r->player[X] - (double) r->map_check[X]) * r->step_size[X];
 	else
-		r->len[X] = ((double) r->map_check[X] + 1.0 - r->player[X]) * r->step_size[X];
+		r->len[X] = ((double) r->map_check[X]
+				+ 1.0 - r->player[X]) * r->step_size[X];
 	r->step[X] = 1 - (r->dir[X] < 0) * 2;
 	if (r->dir[Y] < 0)
 		r->len[Y] = (r->player[Y] - (double) r->map_check[Y]) * r->step_size[Y];
 	else
-		r->len[Y] = ((double) r->map_check[Y] + 1.0 - r->player[Y]) * r->step_size[Y];
+		r->len[Y] = ((double) r->map_check[Y]
+				+ 1.0 - r->player[Y]) * r->step_size[Y];
 	r->step[Y] = 1 - (r->dir[Y] < 0) * 2;
 }
 
