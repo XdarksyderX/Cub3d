@@ -104,6 +104,7 @@ typedef struct s_game
 {
 	mlx_t			*mlx;
 	t_map			*map;
+	bool			tex_loaded;
 	mlx_texture_t	*textures[4];
 	uint32_t		floor_color;
 	uint32_t		ceiling_color;

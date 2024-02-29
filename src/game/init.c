@@ -20,7 +20,7 @@ void	ft_free_game(t_game *game)
 		return ;
 	mlx_delete_image(game->mlx, game->last_frame);
 	i = 0;
-	while (i < 4)
+	while (i < 4 && game->tex_loaded)
 	{
 		if (game->textures[i])
 			mlx_delete_texture(game->textures[i]);
@@ -47,6 +47,7 @@ static void	ft_init_textures(t_game *game, t_config *config)
 		ft_putstr_fd("Error\nFailed to load textures\n", 2);
 		exit(EXIT_FAILURE);
 	}
+	game->tex_loaded = true;
 }
 
 static t_player	*ft_init_player(t_config *config)
@@ -110,6 +111,7 @@ t_game	*ft_init_game(char *config_file)
 	if (!game)
 		return (NULL);
 	game->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d", false);
+	game->tex_loaded = false;
 	map_config = ft_get_config(config_file);
 	game->map = ft_init_map(map_config);
 	if (!ft_check_config(map_config) || !game->mlx || !game->map)
