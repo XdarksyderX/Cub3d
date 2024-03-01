@@ -27,7 +27,7 @@ Compile the program using the provided Makefile and then execute the binary with
 ```bash
 make
 ./cub3D path/to/map.cub
-
+```
 ## Configuration
 
 The `.cub` file details the game's configuration, including map layout, textures, and color settings. The map should be enclosed by walls ('1') and use '0' for open spaces. Player's start position and orientation are denoted by 'N', 'S', 'E', or 'W'.
