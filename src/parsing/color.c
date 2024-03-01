@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 22:15:47 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/25 12:22:03 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/03/01 23:03:31 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void	ft_fix_color(t_config *config)
 
 bool	ft_valid_color(int color[3])
 {
+	if (!color)
+		return (false);
 	if (color[0] < 0 || color[0] > 255)
 		return (false);
 	if (color[1] < 0 || color[1] > 255)

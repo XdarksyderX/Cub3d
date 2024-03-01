@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:47:27 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/26 17:54:45 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/03/01 23:08:27 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,17 @@
 void	ft_usage(void)
 {
 	printf("Usage: ./cub3d <map_file.cub>\n");
+}
+
+bool	ft_file_exists(char *file)
+{
+	int	fd;
+
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
+		return (false);
+	close(fd);
+	return (true);
 }
 
 bool	ft_have_extension(char *file, char *ext)
@@ -41,22 +52,4 @@ uint32_t	mlx_get_pixel_color(mlx_texture_t *texture, uint32_t x, uint32_t y)
 	color |= ((uint32_t)pixel[2]) << 8;
 	color |= (uint32_t)pixel[3];
 	return (color);
-}
-
-uint32_t	ft_apply_shade(uint32_t color, float shade_factor)
-{
-	uint8_t	red;
-	uint8_t	green;
-	uint8_t	blue;
-	uint8_t	alpha;
-
-	shade_factor = fmax(0, fmin(shade_factor, 1));
-	red = (color >> 16) & 0xFF;
-	green = (color >> 8) & 0xFF;
-	blue = color & 0xFF;
-	alpha = (color >> 24) & 0xFF;
-	red = (uint8_t)(red * shade_factor);
-	green = (uint8_t)(green * shade_factor);
-	blue = (uint8_t)(blue * shade_factor);
-	return (red << 24 | green << 16 | blue << 8 | alpha);
 }

@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 20:32:06 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/28 23:15:33 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/03/01 23:06:45 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ static t_map	*ft_init_map(t_config *config)
 {
 	t_map	*map;
 
+	if (!config || !config->map || !config->rows || !config->cols)
+		return (NULL);
 	map = (t_map *)malloc(sizeof(t_map));
 	if (!map || !config)
 		return (free(map), NULL);
@@ -114,7 +116,7 @@ t_game	*ft_init_game(char *config_file)
 	game->tex_loaded = false;
 	map_config = ft_get_config(config_file);
 	game->map = ft_init_map(map_config);
-	if (!ft_check_config(map_config) || !game->mlx || !game->map)
+	if (!map_config || !ft_check_config(map_config) || !game->mlx || !game->map)
 	{
 		ft_free_game(game);
 		ft_free_config(map_config);

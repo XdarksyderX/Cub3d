@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:21:07 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/28 12:13:30 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/03/01 23:05:19 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,33 +53,6 @@ static void	ft_init(t_config *config)
 	config->cols = 0;
 }
 
-static void	ft_get_map(int fd, t_config *config, char *line)
-{
-	int		i;
-
-	config->map = malloc(sizeof(char *) * (config->rows + 1));
-	if (!config->map)
-		return ;
-	i = 0;
-	while (line)
-	{
-		if (is_map_line(line))
-		{
-			config->map[i] = ft_strdup(line);
-			if (!config->map[i])
-			{
-				ft_free_matrix((void **)config->map, i);
-				config->map = NULL;
-				return ;
-			}
-			i++;
-		}
-		free(line);
-		line = get_next_line(fd);
-	}
-	config->map[i] = NULL;
-}
-
 static void	ft_parse_line(char *line, t_config *config, int *lock)
 {
 	char	**config_line;
@@ -107,7 +80,7 @@ t_config	*ft_get_config(char	*config_file)
 	fd = open(config_file, O_RDONLY);
 	config = malloc(sizeof(t_config));
 	if (!config || fd < 0)
-		return (NULL);
+		return (free(config), NULL);
 	ft_init(config);
 	ft_get_map_size(config_file, config);
 	line = get_next_line(fd);

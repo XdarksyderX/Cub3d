@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:16:43 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/25 11:46:28 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/03/01 22:07:24 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ bool			ft_valid_color(int color[3]);
 
 void			ft_get_map_size(char *config_file, t_config *config);
 bool			is_map_line(const char *line);
+void			ft_get_map(int fd, t_config *config, char *line);
 t_config		*ft_get_config(char	*config_file);
 int				*ft_find_player_pos(char **map);
+int				ft_count_chars(char **map, char *chars);
 
 bool			ft_check_config(t_config *config);
 

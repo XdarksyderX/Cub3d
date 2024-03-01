@@ -6,7 +6,7 @@
 #    By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/19 20:51:28 by migarci2          #+#    #+#              #
-#    Updated: 2024/02/28 23:14:42 by migarci2         ###   ########.fr        #
+#    Updated: 2024/03/01 21:37:19 by migarci2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRCs     =  $(SRC_DIR)/main.c \
             $(SRC_DIR)/parsing/debug.c \
             $(SRC_DIR)/parsing/map_size.c \
             $(SRC_DIR)/parsing/parser.c \
+			$(SRC_DIR)/parsing/get_map.c \
 			$(SRC_DIR)/game/init.c \
 			$(SRC_DIR)/game/hooks.c \
 			$(SRC_DIR)/game/render.c \
@@ -43,7 +44,7 @@ SRCs     =  $(SRC_DIR)/main.c \
 			$(SRC_DIR)/game/texture.c \
 			$(SRC_DIR)/game/sliding.c \
 			$(SRC_DIR)/game/valid_move.c \
-			$(SRC_DIR)/game/draw.c \
+			$(SRC_DIR)/game/draw.c
 
 OBJ_DIR  = obj
 OBJs     = $(SRCs:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 22:32:47 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/22 21:06:44 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/03/01 23:00:50 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	ft_debug_config(t_config *config)
 	printf("Rows: %d\n", config->rows);
 	printf("Cols: %d\n", config->cols);
 	printf("Map:\n");
+	if (!config->map)
+		return ;
 	i = 0;
 	while (i < config->rows)
 	{

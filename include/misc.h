@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:17:18 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/28 16:56:29 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/03/01 23:08:02 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,6 @@ void		ft_free_matrix(void **map, int n);
 bool		ft_have_extension(char *file, char *ext);
 int			ft_matrix_len(void **matrix);
 void		**ft_matrix_dup(void **matrix);
-uint32_t	ft_apply_shade(uint32_t color, float shade_factor);
+bool		ft_file_exists(char *file);
 
 #endif
