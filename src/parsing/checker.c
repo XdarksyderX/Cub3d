@@ -6,45 +6,53 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 18:34:05 by migarci2          #+#    #+#             */
-/*   Updated: 2024/03/01 23:05:55 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/03/01 23:21:31 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-static void	assign_player(int *pos, int i, int j, char **map)
+static bool	ft_check_textures_files(t_config *config)
 {
-	pos[0] = i;
-	pos[1] = j;
-	pos[2] = map[i][j];
+	if (!ft_file_exists(config->north_texture_path))
+	{
+		ft_putstr_fd("Error\nNorth texture file not found\n", STDERR_FILENO);
+		return (false);
+	}
+	if (!ft_file_exists(config->south_texture_path))
+	{
+		ft_putstr_fd("Error\nSouth texture file not found\n", STDERR_FILENO);
+		return (false);
+	}
+	if (!ft_file_exists(config->east_texture_path))
+	{
+		ft_putstr_fd("Error\nEast texture file not found\n", STDERR_FILENO);
+		return (false);
+	}
+	if (!ft_file_exists(config->west_texture_path))
+	{
+		ft_putstr_fd("Error\nWest texture file not found\n", STDERR_FILENO);
+		return (false);
+	}
+	return (true);
 }
 
-int	*ft_find_player_pos(char **map)
+static bool	ft_check_fully_enclosed(t_config *config)
 {
-	int	*pos;
-	int	i;
-	int	j;
+	char	**map;
 
-	pos = (int *)malloc(sizeof(int) * 3);
-	if (!pos)
-		return (NULL);
-	i = 0;
-	while (map[i] != NULL)
+	if (!config || !config->map)
+		return (false);
+	map = (char **)ft_matrix_dup((void **)config->map);
+	if (!map)
+		return (false);
+	if (!is_map_fully_enclosed(map, config->cols, config->rows))
 	{
-		j = 0;
-		while (map[i][j] != '\0')
-		{
-			if (ft_strchr("NSWE", map[i][j]) != NULL)
-			{
-				assign_player(pos, i, j, map);
-				return (pos);
-			}
-			j++;
-		}
-		i++;
+		ft_free_matrix((void **)map, config->rows);
+		return (false);
 	}
-	free(pos);
-	return (NULL);
+	ft_free_matrix((void **)map, config->rows);
+	return (true);
 }
 
 int	ft_count_chars(char **map, char *chars)
@@ -73,8 +81,6 @@ int	ft_count_chars(char **map, char *chars)
 
 bool	ft_check_config(t_config *config)
 {
-	char	**map;
-
 	if (!ft_valid_color(config->floor_color)
 		|| !ft_valid_color(config->ceiling_color))
 	{
@@ -91,11 +97,10 @@ bool	ft_check_config(t_config *config)
 		ft_putstr_fd("Error\nInvalid player error\n", STDERR_FILENO);
 		return (false);
 	}
-	map = (char **) ft_matrix_dup((void **)config->map);
-	if (!is_map_fully_enclosed(map, config->cols, config->rows))
+	if (!ft_check_fully_enclosed(config))
 	{
 		ft_putstr_fd("Error\nConfiguration error\n", STDERR_FILENO);
-		return (ft_free_matrix((void **)map, config->rows), false);
+		return (false);
 	}
-	return (ft_free_matrix((void **)map, config->rows), true);
+	return (ft_check_textures_files(config));
 }
