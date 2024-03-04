@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:17:18 by migarci2          #+#    #+#             */
-/*   Updated: 2024/03/01 23:08:02 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/03/04 20:34:09 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef struct s_flood
 }	t_flood;
 
 void		ft_usage(void);
+
+void		ft_print_map(char **map);
 
 char		*ft_sanitize_line(char *str);
 

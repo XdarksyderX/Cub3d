@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:16:43 by migarci2          #+#    #+#             */
-/*   Updated: 2024/03/01 22:07:24 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/03/04 18:41:07 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@
 # include "misc.h"
 
 # define MAP_CHARS "01 NSWE"
+
+typedef struct s_delta_movement
+{
+	int	delta_i;
+	int	delta_j;
+	int	i;
+	int	j;
+}	t_delta_movement;
 
 typedef struct s_config
 {

@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 20:32:06 by migarci2          #+#    #+#             */
-/*   Updated: 2024/03/01 23:06:45 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/03/04 21:32:16 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,11 +110,11 @@ t_game	*ft_init_game(char *config_file)
 	t_config		*map_config;
 
 	game = (t_game *)malloc(sizeof(t_game));
+	map_config = ft_get_config(config_file);
 	if (!game)
-		return (NULL);
+		return (free(map_config), NULL);
 	game->mlx = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d", false);
 	game->tex_loaded = false;
-	map_config = ft_get_config(config_file);
 	game->map = ft_init_map(map_config);
 	if (!map_config || !ft_check_config(map_config) || !game->mlx || !game->map)
 	{

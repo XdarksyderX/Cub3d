@@ -6,11 +6,32 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:21:07 by migarci2          #+#    #+#             */
-/*   Updated: 2024/03/01 23:05:19 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/03/04 21:23:20 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+
+static void	ft_check_end(t_config *config, int fd)
+{
+	char	*line;
+
+	line = get_next_line(fd);
+	while (line)
+	{
+		if (ft_strlen(line) > 0)
+		{
+			free(line);
+			ft_free_config(config);
+			config = NULL;
+			ft_putstr_fd("Error\nInvalid configuration file\n", STDERR_FILENO);
+			exit(EXIT_FAILURE);
+			break ;
+		}
+		free(line);
+		line = get_next_line(fd);
+	}
+}
 
 static void	ft_parse_texture(char **config_line, t_config *config)
 {
@@ -94,6 +115,7 @@ t_config	*ft_get_config(char	*config_file)
 		line = get_next_line(fd);
 	}
 	ft_get_map(fd, config, line);
+	ft_check_end(config, fd);
 	close(fd);
 	return (config);
 }

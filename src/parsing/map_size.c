@@ -6,20 +6,24 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 21:55:15 by migarci2          #+#    #+#             */
-/*   Updated: 2024/03/01 23:00:41 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/03/04 21:18:44 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-int	ft_meassure_line(const char *str)
+int	ft_count_char(char *str, char c)
 {
-	int	i;
+	int	count;
 
-	i = 0;
-	while (str[i] != '\0' && ft_strchr(SPACES, str[i]) == NULL)
-		i++;
-	return (i);
+	count = 0;
+	while (*str)
+	{
+		if (*str == c)
+			count++;
+		str++;
+	}
+	return (count);
 }
 
 bool	is_map_char(char c)
@@ -39,24 +43,19 @@ bool	is_map_char(char c)
 
 bool	is_map_line(const char *line)
 {
-	size_t	i;
-	size_t	len;
+	int	i;
 
 	if (!line)
 		return (false);
 	i = 0;
-	while (ft_isspace(line[i]))
-		i++;
-	len = ft_meassure_line(line + i);
-	if (line[i] != '1' || line[len - 1] != '1')
-		return (false);
 	while (line[i])
 	{
 		if (!is_map_char(line[i]))
 			return (false);
 		i++;
 	}
-	return (true);
+	return (ft_strlen(line) > 0
+		&& ft_count_char((char *)line, ' ') != (int) ft_strlen(line));
 }
 
 static void	ft_update_map_size(t_config *config, const char *line)

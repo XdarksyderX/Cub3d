@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 20:47:27 by migarci2          #+#    #+#             */
-/*   Updated: 2024/03/01 23:08:27 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/03/04 18:48:57 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,16 @@ uint32_t	mlx_get_pixel_color(mlx_texture_t *texture, uint32_t x, uint32_t y)
 	color |= ((uint32_t)pixel[2]) << 8;
 	color |= (uint32_t)pixel[3];
 	return (color);
+}
+
+void	ft_print_map(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i] != NULL)
+	{
+		printf("%s\n", map[i]);
+		i++;
+	}
 }
