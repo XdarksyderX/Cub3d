@@ -6,20 +6,20 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 21:55:15 by migarci2          #+#    #+#             */
-/*   Updated: 2024/03/04 21:18:44 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/03/04 21:44:10 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-int	ft_count_char(char *str, char c)
+int	ft_count_space(char *str, char *spaces)
 {
 	int	count;
 
 	count = 0;
 	while (*str)
 	{
-		if (*str == c)
+		if (ft_strchr(spaces, *str) != NULL)
 			count++;
 		str++;
 	}
@@ -55,7 +55,7 @@ bool	is_map_line(const char *line)
 		i++;
 	}
 	return (ft_strlen(line) > 0
-		&& ft_count_char((char *)line, ' ') != (int) ft_strlen(line));
+		&& ft_count_space((char *)line, SPACES) != (int) ft_strlen(line));
 }
 
 static void	ft_update_map_size(t_config *config, const char *line)

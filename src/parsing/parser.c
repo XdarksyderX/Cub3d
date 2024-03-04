@@ -6,7 +6,7 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:21:07 by migarci2          #+#    #+#             */
-/*   Updated: 2024/03/04 21:23:20 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/03/04 21:43:51 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ static void	ft_check_end(t_config *config, int fd)
 	line = get_next_line(fd);
 	while (line)
 	{
-		if (ft_strlen(line) > 0)
+		if (ft_strlen(line) > 0
+			&& ft_count_space(line, SPACES) != (int) ft_strlen(line))
 		{
 			free(line);
 			ft_free_config(config);

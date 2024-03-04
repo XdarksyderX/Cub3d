@@ -6,11 +6,12 @@
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 22:18:22 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/21 18:22:04 by migarci2         ###   ########.fr       */
+/*   Updated: 2024/03/04 21:40:42 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "misc.h"
+
 
 static char	*remove_spaces_around_commas(char *str)
 {
