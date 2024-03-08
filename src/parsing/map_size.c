@@ -91,5 +91,6 @@ void	ft_get_map_size(char *config_file, t_config *config)
 		free(line);
 		line = get_next_line(fd);
 	}
+	free(line);
 	close(fd);
 }

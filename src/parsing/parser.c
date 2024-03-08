@@ -27,11 +27,11 @@ static void	ft_check_end(t_config *config, int fd)
 			config = NULL;
 			ft_putstr_fd("Error\nInvalid configuration file\n", STDERR_FILENO);
 			exit(EXIT_FAILURE);
-			break ;
 		}
 		free(line);
 		line = get_next_line(fd);
 	}
+	free(line);
 }
 
 static void	ft_parse_texture(char **config_line, t_config *config)
