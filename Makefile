@@ -6,12 +6,11 @@
 #    By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/19 20:51:28 by migarci2          #+#    #+#              #
-#    Updated: 2024/03/04 18:56:18 by migarci2         ###   ########.fr        #
+#    Updated: 2024/03/08 09:29:29 by migarci2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME     = cub3d
-
 
 CC       = gcc
 CFLAGS   = -Wall -Wextra -Werror -O3
